@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C32BA0802B95079700F33D8F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BA07F2B95079700F33D8F /* DatabaseManager.swift */; };
+		C32BA0852B95154500F33D8F /* TodoGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BA0842B95154500F33D8F /* TodoGroup.swift */; };
+		C32BA0872B95E9A200F33D8F /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BA0862B95E9A200F33D8F /* AddGroupView.swift */; };
+		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
+		C38723162B75488300B66242 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723152B75488300B66242 /* TodoListView.swift */; };
+		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
+		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
+		C38723252B75488500B66242 /* FluentDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723242B75488500B66242 /* FluentDBTests.swift */; };
+		C387232F2B75488500B66242 /* FluentDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387232E2B75488500B66242 /* FluentDBUITests.swift */; };
+		C38723312B75488500B66242 /* FluentDBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723302B75488500B66242 /* FluentDBUITestsLaunchTests.swift */; };
+		C387233F2B75495E00B66242 /* FluentSQLiteDriver in Frameworks */ = {isa = PBXBuildFile; productRef = C387233E2B75495E00B66242 /* FluentSQLiteDriver */; };
+		C38723412B754B5800B66242 /* TodoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723402B754B5800B66242 /* TodoDetailsView.swift */; };
+		C38723442B7553CA00B66242 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C38723432B7553CA00B66242 /* Fluent */; };
+		C38723462B7555AF00B66242 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723452B7555AF00B66242 /* Todo.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C38723212B75488500B66242 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C38723082B75488200B66242 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C387230F2B75488200B66242;
+			remoteInfo = FluentDB;
+		};
+		C387232B2B75488500B66242 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C38723082B75488200B66242 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C387230F2B75488200B66242;
+			remoteInfo = FluentDB;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C32BA07F2B95079700F33D8F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		C32BA0842B95154500F33D8F /* TodoGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroup.swift; sourceTree = "<group>"; };
+		C32BA0862B95E9A200F33D8F /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
+		C38723102B75488300B66242 /* FluentDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluentDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C38723132B75488300B66242 /* FluentDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBApp.swift; sourceTree = "<group>"; };
+		C38723152B75488300B66242 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		C38723172B75488500B66242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C387231A2B75488500B66242 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C38723202B75488500B66242 /* FluentDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluentDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C38723242B75488500B66242 /* FluentDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBTests.swift; sourceTree = "<group>"; };
+		C387232A2B75488500B66242 /* FluentDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluentDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C387232E2B75488500B66242 /* FluentDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBUITests.swift; sourceTree = "<group>"; };
+		C38723302B75488500B66242 /* FluentDBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C38723402B754B5800B66242 /* TodoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsView.swift; sourceTree = "<group>"; };
+		C38723452B7555AF00B66242 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C387230D2B75488200B66242 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C38723442B7553CA00B66242 /* Fluent in Frameworks */,
+				C387233F2B75495E00B66242 /* FluentSQLiteDriver in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C387231D2B75488500B66242 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C38723272B75488500B66242 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C32BA0812B95098100F33D8F /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				C32BA07F2B95079700F33D8F /* DatabaseManager.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		C32BA0822B95098100F33D8F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C38723132B75488300B66242 /* FluentDBApp.swift */,
+				C38723152B75488300B66242 /* TodoListView.swift */,
+				C38723402B754B5800B66242 /* TodoDetailsView.swift */,
+				C32BA0862B95E9A200F33D8F /* AddGroupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C32BA0832B9509A000F33D8F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C38723452B7555AF00B66242 /* Todo.swift */,
+				C32BA0842B95154500F33D8F /* TodoGroup.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C38723072B75488200B66242 = {
+			isa = PBXGroup;
+			children = (
+				C38723122B75488300B66242 /* FluentDB */,
+				C38723232B75488500B66242 /* FluentDBTests */,
+				C387232D2B75488500B66242 /* FluentDBUITests */,
+				C38723112B75488300B66242 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C38723112B75488300B66242 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C38723102B75488300B66242 /* FluentDB.app */,
+				C38723202B75488500B66242 /* FluentDBTests.xctest */,
+				C387232A2B75488500B66242 /* FluentDBUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C38723122B75488300B66242 /* FluentDB */ = {
+			isa = PBXGroup;
+			children = (
+				C32BA0832B9509A000F33D8F /* Entities */,
+				C32BA0812B95098100F33D8F /* DB */,
+				C32BA0822B95098100F33D8F /* Views */,
+				C38723172B75488500B66242 /* Assets.xcassets */,
+				C38723192B75488500B66242 /* Preview Content */,
+			);
+			path = FluentDB;
+			sourceTree = "<group>";
+		};
+		C38723192B75488500B66242 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C387231A2B75488500B66242 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C38723232B75488500B66242 /* FluentDBTests */ = {
+			isa = PBXGroup;
+			children = (
+				C38723242B75488500B66242 /* FluentDBTests.swift */,
+			);
+			path = FluentDBTests;
+			sourceTree = "<group>";
+		};
+		C387232D2B75488500B66242 /* FluentDBUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C387232E2B75488500B66242 /* FluentDBUITests.swift */,
+				C38723302B75488500B66242 /* FluentDBUITestsLaunchTests.swift */,
+			);
+			path = FluentDBUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C387230F2B75488200B66242 /* FluentDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C38723342B75488500B66242 /* Build configuration list for PBXNativeTarget "FluentDB" */;
+			buildPhases = (
+				C387230C2B75488200B66242 /* Sources */,
+				C387230D2B75488200B66242 /* Frameworks */,
+				C387230E2B75488200B66242 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FluentDB;
+			packageProductDependencies = (
+				C387233E2B75495E00B66242 /* FluentSQLiteDriver */,
+				C38723432B7553CA00B66242 /* Fluent */,
+			);
+			productName = FluentDB;
+			productReference = C38723102B75488300B66242 /* FluentDB.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C387231F2B75488500B66242 /* FluentDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C38723372B75488500B66242 /* Build configuration list for PBXNativeTarget "FluentDBTests" */;
+			buildPhases = (
+				C387231C2B75488500B66242 /* Sources */,
+				C387231D2B75488500B66242 /* Frameworks */,
+				C387231E2B75488500B66242 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C38723222B75488500B66242 /* PBXTargetDependency */,
+			);
+			name = FluentDBTests;
+			productName = FluentDBTests;
+			productReference = C38723202B75488500B66242 /* FluentDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C38723292B75488500B66242 /* FluentDBUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C387233A2B75488500B66242 /* Build configuration list for PBXNativeTarget "FluentDBUITests" */;
+			buildPhases = (
+				C38723262B75488500B66242 /* Sources */,
+				C38723272B75488500B66242 /* Frameworks */,
+				C38723282B75488500B66242 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C387232C2B75488500B66242 /* PBXTargetDependency */,
+			);
+			name = FluentDBUITests;
+			productName = FluentDBUITests;
+			productReference = C387232A2B75488500B66242 /* FluentDBUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C38723082B75488200B66242 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					C387230F2B75488200B66242 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					C387231F2B75488500B66242 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = C387230F2B75488200B66242;
+					};
+					C38723292B75488500B66242 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = C387230F2B75488200B66242;
+					};
+				};
+			};
+			buildConfigurationList = C387230B2B75488200B66242 /* Build configuration list for PBXProject "FluentDB" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C38723072B75488200B66242;
+			packageReferences = (
+				C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */,
+				C38723422B7553CA00B66242 /* XCRemoteSwiftPackageReference "fluent" */,
+			);
+			productRefGroup = C38723112B75488300B66242 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C387230F2B75488200B66242 /* FluentDB */,
+				C387231F2B75488500B66242 /* FluentDBTests */,
+				C38723292B75488500B66242 /* FluentDBUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C387230E2B75488200B66242 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */,
+				C38723182B75488500B66242 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C387231E2B75488500B66242 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C38723282B75488500B66242 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C387230C2B75488200B66242 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32BA0872B95E9A200F33D8F /* AddGroupView.swift in Sources */,
+				C38723162B75488300B66242 /* TodoListView.swift in Sources */,
+				C32BA0802B95079700F33D8F /* DatabaseManager.swift in Sources */,
+				C38723142B75488300B66242 /* FluentDBApp.swift in Sources */,
+				C38723412B754B5800B66242 /* TodoDetailsView.swift in Sources */,
+				C32BA0852B95154500F33D8F /* TodoGroup.swift in Sources */,
+				C38723462B7555AF00B66242 /* Todo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C387231C2B75488500B66242 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C38723252B75488500B66242 /* FluentDBTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C38723262B75488500B66242 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C38723312B75488500B66242 /* FluentDBUITestsLaunchTests.swift in Sources */,
+				C387232F2B75488500B66242 /* FluentDBUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C38723222B75488500B66242 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C387230F2B75488200B66242 /* FluentDB */;
+			targetProxy = C38723212B75488500B66242 /* PBXContainerItemProxy */;
+		};
+		C387232C2B75488500B66242 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C387230F2B75488200B66242 /* FluentDB */;
+			targetProxy = C387232B2B75488500B66242 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C38723322B75488500B66242 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C38723332B75488500B66242 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C38723352B75488500B66242 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FluentDB/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ozon.FluentDB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C38723362B75488500B66242 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FluentDB/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ozon.FluentDB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C38723382B75488500B66242 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ozon.FluentDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FluentDB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FluentDB";
+			};
+			name = Debug;
+		};
+		C38723392B75488500B66242 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ozon.FluentDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FluentDB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FluentDB";
+			};
+			name = Release;
+		};
+		C387233B2B75488500B66242 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ozon.FluentDBUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FluentDB;
+			};
+			name = Debug;
+		};
+		C387233C2B75488500B66242 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ozon.FluentDBUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FluentDB;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C387230B2B75488200B66242 /* Build configuration list for PBXProject "FluentDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C38723322B75488500B66242 /* Debug */,
+				C38723332B75488500B66242 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C38723342B75488500B66242 /* Build configuration list for PBXNativeTarget "FluentDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C38723352B75488500B66242 /* Debug */,
+				C38723362B75488500B66242 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C38723372B75488500B66242 /* Build configuration list for PBXNativeTarget "FluentDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C38723382B75488500B66242 /* Debug */,
+				C38723392B75488500B66242 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C387233A2B75488500B66242 /* Build configuration list for PBXNativeTarget "FluentDBUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C387233B2B75488500B66242 /* Debug */,
+				C387233C2B75488500B66242 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vapor/fluent-sqlite-driver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.0;
+			};
+		};
+		C38723422B7553CA00B66242 /* XCRemoteSwiftPackageReference "fluent" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vapor/fluent.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C387233E2B75495E00B66242 /* FluentSQLiteDriver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */;
+			productName = FluentSQLiteDriver;
+		};
+		C38723432B7553CA00B66242 /* Fluent */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C38723422B7553CA00B66242 /* XCRemoteSwiftPackageReference "fluent" */;
+			productName = Fluent;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C38723082B75488200B66242 /* Project object */;
+}
