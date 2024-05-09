@@ -14,10 +14,6 @@ struct TodoGroup: Identifiable, Hashable {
     var name: String
 
     var todos: [Todo]
-//
-//    static func == (lhs: TodoGroup, rhs: TodoGroup) -> Bool {
-//        lhs.id == rhs.id
-//    }
 }
 
 final class TodoGroupEntity : Model {

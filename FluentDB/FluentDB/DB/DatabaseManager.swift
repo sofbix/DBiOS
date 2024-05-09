@@ -32,8 +32,7 @@ class DatabaseManager {
     }
 
     init() {
-
-
+        
     }
 
     public func start() async {

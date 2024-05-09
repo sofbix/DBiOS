@@ -30,7 +30,6 @@ final class TodoEntity : Model {
     @OptionalField(key: "comments")
     var comments: String?
 
-
     @OptionalField(key: "date")
     var date: Date?
 
