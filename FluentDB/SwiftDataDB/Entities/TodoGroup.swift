@@ -14,6 +14,8 @@ struct TodoGroup: Identifiable, Hashable {
     var name: String
 
     var todos: [Todo]
+
+    var persistentID: PersistentIdentifier?
 }
 
 @Model

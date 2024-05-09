@@ -15,6 +15,8 @@ struct Todo: Identifiable, Hashable {
     var comments: String?
     var groupId: UUID?
     var count: Int
+
+    var persistentID: PersistentIdentifier
 }
 
 @Model
@@ -46,7 +48,7 @@ final class TodoEntity {
         if let rawDate = self.date {
             date = Self.dateFormatter.string(from: rawDate)
         }
-        return Todo(id: self.id ?? UUID(), name: self.name, date: date, comments: self.comments, groupId: self.group?.id, count: self.count)
+        return Todo(id: self.id ?? UUID(), name: self.name, date: date, comments: self.comments, groupId: self.group?.id, count: self.count, persistentID: self.id)
     }
 
     static let dateFormatter: DateFormatter = {

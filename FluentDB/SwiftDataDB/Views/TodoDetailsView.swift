@@ -62,11 +62,21 @@ struct TodoDetailsView: View {
         }
     }
 
+    func selectedGroupEntity(_ context: ModelContext) -> TodoGroupEntity? {
+        guard 
+            let persistentID = selectedGroup.persistentID,
+            let group = context.model(for: persistentID) as? TodoGroupEntity
+        else {
+            return nil
+        }
+        return group
+    }
+
     func add() {
         do {
             let todo = TodoEntity(id: nil, name: name)
             todo.comments = comments
-            todo.group = TodoGroupEntity(id: selectedGroup.id, name: "")
+            todo.group = selectedGroupEntity(modelContext)
             modelContext.insert(todo)
             try modelContext.save()
             finish()
@@ -76,20 +86,17 @@ struct TodoDetailsView: View {
     }
 
     func edit() {
-        Task { @MainActor in
+        Task {
             do {
                 let newContext = ModelContext(DatabaseManager.shared.container)
 
-                let id = editedTodo?.id
-                guard let todo = try newContext.fetch(FetchDescriptor<TodoEntity>(
-                    predicate: #Predicate<TodoEntity> { $0.id == id }
-                )).first else {
+                guard let editedTodo, let todo = newContext.model(for: editedTodo.persistentID) as? TodoEntity else {
                     return
                 }
                 todo.name = name
                 todo.comments = comments
-                todo.group = TodoGroupEntity(id: selectedGroup.id, name: "")
-                try modelContext.save()
+                todo.group = selectedGroupEntity(newContext)
+                try newContext.save()
                 finish()
             } catch let error{
                 print("Error: \(error)")
@@ -110,12 +117,12 @@ struct TodoDetailsView: View {
             groups = try newContext
                 .fetch(groupsDescriptor)
                 .map { item in
-                    TodoGroup(id: item.id ?? UUID(), name: item.name, todos: item.todos.map{$0.dao})
+                    TodoGroup(id: item.id ?? UUID(), name: item.name, todos: item.todos.map{$0.dao}, persistentID: item.id)
                 }
 
             let selectedGroup: TodoGroup = groups.first{ item in
                 item.id == editedTodo?.groupId
-            } ?? groups.last ?? TodoGroup(name: "", todos: [])
+            } ?? groups.last ?? TodoGroup(name: "", todos: [], persistentID: nil)
 
             self.selectedGroup = selectedGroup
         }
