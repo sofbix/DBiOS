@@ -36,18 +36,7 @@ final class TodoEntity : Object {
     }
 
     var dao: Todo {
-        var date = ""
-        if let rawDate = self.date {
-            date = Self.dateFormatter.string(from: rawDate)
-        }
         return Todo(id: self.id, name: self.name, date: date, comments: self.comments, groupId: self.group?.id, count: self.count)
     }
-
-    static let dateFormatter: DateFormatter = {
-        let result = DateFormatter()
-        result.dateStyle = .short
-        result.timeStyle = .medium
-        return result
-    }()
 }
 
