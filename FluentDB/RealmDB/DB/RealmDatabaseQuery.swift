@@ -17,8 +17,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
         return databaseManager.realm.objects(TodoGroupEntity.self)
             .sorted(by: \.name, ascending: true)
             .map { item in
-                let id: UUID = item.id
-                return Group(id: id, name: item.name)
+                Group(id: item.id, name: item.name)
             }
     }
 
@@ -35,8 +34,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
         return query
             .sorted(by: \.name, ascending: true)
             .map{ item in
-                let id: UUID = item.id
-                return TodoGroup(id: id, name: item.name, todos: item.todos.map{$0.dao})
+                TodoGroup(id: item.id, name: item.name, todos: item.todos.map{$0.dao})
             }
     }
 

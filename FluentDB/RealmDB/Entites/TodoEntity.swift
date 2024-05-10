@@ -40,9 +40,7 @@ final class TodoEntity : Object {
         if let rawDate = self.date {
             date = Self.dateFormatter.string(from: rawDate)
         }
-        let id: UUID = self.id
-        let groupId: UUID = self.group?.id ?? UUID()
-        return Todo(id: id, name: self.name, date: date, comments: self.comments, groupId: groupId, count: self.count)
+        return Todo(id: self.id, name: self.name, date: date, comments: self.comments, groupId: self.group?.id, count: self.count)
     }
 
     static let dateFormatter: DateFormatter = {
