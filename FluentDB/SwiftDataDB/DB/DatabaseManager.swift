@@ -7,8 +7,9 @@
 
 import Foundation
 import SwiftData
+import Core
 
-class DatabaseManager {
+class DatabaseManager: DatabaseProtocol {
 
     static let shared = DatabaseManager()
 

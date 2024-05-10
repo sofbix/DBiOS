@@ -15,12 +15,16 @@ public struct Todo: Identifiable, Hashable {
     public var groupId: UUID?
     public var count: Int
 
-    public init(id: UUID, name: String, date: String, comments: String? = nil, groupId: UUID? = nil, count: Int) {
+    // reserved
+    public var data: EnityData?
+
+    public init(id: UUID, name: String, date: String, comments: String? = nil, groupId: UUID? = nil, count: Int, data: EnityData? = nil) {
         self.id = id
         self.name = name
         self.date = date
         self.comments = comments
         self.groupId = groupId
         self.count = count
+        self.data = data
     }
 }

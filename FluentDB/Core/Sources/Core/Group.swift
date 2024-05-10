@@ -11,9 +11,13 @@ public struct Group: Identifiable, Hashable {
     public var id: UUID?
     public var name: String
 
-    public init(id: UUID? = nil, name: String) {
+    // reserved
+    public var data: EnityData?
+
+    public init(id: UUID? = nil, name: String, data: EnityData? = nil) {
         self.id = id
         self.name = name
+        self.data = data
     }
 }
 

@@ -7,17 +7,7 @@
 
 import Foundation
 import SwiftData
-
-struct Todo: Identifiable, Hashable {
-    var id: UUID
-    var name: String
-    var date: String
-    var comments: String?
-    var groupId: UUID?
-    var count: Int
-
-    var persistentID: PersistentIdentifier
-}
+import Core
 
 @Model
 final class TodoEntity {
@@ -36,11 +26,12 @@ final class TodoEntity {
     @Transient
     var count: Int = 0
 
-    init(id: UUID? = nil, name: String, comments: String? = nil, count: Int = 0) {
+    init(id: UUID? = nil, name: String, comments: String? = nil, date: Date = Date(), count: Int = 0) {
         self.id = id
         self.name = name
         self.comments = comments
         self.count = count
+        self.date = date
     }
 
     var dao: Todo {
@@ -48,7 +39,8 @@ final class TodoEntity {
         if let rawDate = self.date {
             date = Self.dateFormatter.string(from: rawDate)
         }
-        return Todo(id: self.id ?? UUID(), name: self.name, date: date, comments: self.comments, groupId: self.group?.id, count: self.count, persistentID: self.id)
+        let persistentID: PersistentIdentifier = self.id
+        return Todo(id: self.id ?? UUID(), name: self.name, date: date, comments: self.comments, groupId: self.group?.id, count: self.count, data: EnityData(data: persistentID))
     }
 
     static let dateFormatter: DateFormatter = {

@@ -8,16 +8,6 @@
 import Foundation
 import SwiftData
 
-struct TodoGroup: Identifiable, Hashable {
-
-    var id: UUID?
-    var name: String
-
-    var todos: [Todo]
-
-    var persistentID: PersistentIdentifier?
-}
-
 @Model
 final class TodoGroupEntity {
 

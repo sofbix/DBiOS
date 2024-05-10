@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
+import Core
 
 @main
 struct SwiftDataDBApp: App {
     var body: some Scene {
         WindowGroup {
-            TodoListView()
-                .modelContainer(DatabaseManager.shared.container)
+            StartView(db: DatabaseManager.shared, dbQuery: SwiftDataDatabaseQuery(databaseManager: DatabaseManager.shared))
         }
     }
 }
