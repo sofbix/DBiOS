@@ -33,6 +33,7 @@
 		C3A4DAB02BED4A2C0010FD6D /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAAF2BED4A2C0010FD6D /* TodoListView.swift */; };
 		C3A4DAB22BED4B850010FD6D /* TodoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAB12BED4B850010FD6D /* TodoDetailsView.swift */; };
 		C3A4DAB42BED4BB40010FD6D /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAB32BED4BB40010FD6D /* AddGroupView.swift */; };
+		C3A4DAB62BEDF4340010FD6D /* FluentDatabaseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAB52BEDF4340010FD6D /* FluentDatabaseQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		C3A4DAAF2BED4A2C0010FD6D /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		C3A4DAB12BED4B850010FD6D /* TodoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsView.swift; sourceTree = "<group>"; };
 		C3A4DAB32BED4BB40010FD6D /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
+		C3A4DAB52BEDF4340010FD6D /* FluentDatabaseQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDatabaseQuery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				C32BA07F2B95079700F33D8F /* DatabaseManager.swift */,
+				C3A4DAB52BEDF4340010FD6D /* FluentDatabaseQuery.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				C32BA0802B95079700F33D8F /* DatabaseManager.swift in Sources */,
 				C38723142B75488300B66242 /* FluentDBApp.swift in Sources */,
 				C38723412B754B5800B66242 /* TodoDetailsView.swift in Sources */,
+				C3A4DAB62BEDF4340010FD6D /* FluentDatabaseQuery.swift in Sources */,
 				C32BA0852B95154500F33D8F /* TodoGroup.swift in Sources */,
 				C38723462B7555AF00B66242 /* Todo.swift in Sources */,
 			);

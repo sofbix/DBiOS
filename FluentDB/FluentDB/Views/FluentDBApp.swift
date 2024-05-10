@@ -7,20 +7,32 @@
 
 import SwiftUI
 
-@main
-struct FluentDBApp: App {
+final class Container: ObservableObject {
+    var dbQuery: DatabaseQueryProtocol
 
+    init(dbQuery: DatabaseQueryProtocol) {
+        self.dbQuery = dbQuery
+    }
+}
+
+struct StartView: View {
     @State
     private var isLoaded = false
 
-    var body: some Scene {
-        WindowGroup {
-            if isLoaded {
-                TodoListView()
-            } else {
-                Text("Loading...").onAppear {
-                    loading()
-                }
+    @StateObject
+    private var container: Container
+
+    init(dbQuery: DatabaseQueryProtocol) {
+        self._container = StateObject<Container>(wrappedValue: Container(dbQuery: dbQuery))
+    }
+
+    var body: some View {
+        if isLoaded {
+            TodoListView(container: container)
+                .environmentObject(container)
+        } else {
+            Text("Loading...").onAppear {
+                loading()
             }
         }
     }
@@ -33,4 +45,15 @@ struct FluentDBApp: App {
             }
         }
     }
+}
+
+@main
+struct FluentDBApp: App {
+
+    var body: some Scene {
+        WindowGroup {
+            StartView(dbQuery: FluentDatabaseQuery(databaseManager: DatabaseManager.shared))
+        }
+    }
+
 }

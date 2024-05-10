@@ -9,6 +9,9 @@ import SwiftUI
 
 struct TodoDetailsView: View {
 
+    @EnvironmentObject
+    private var container: Container
+
     @Environment(\.presentationMode)
     private var presentationMode
 
@@ -23,9 +26,9 @@ struct TodoDetailsView: View {
     private var editedTodo: Todo?
 
     @State
-    private var groups: [TodoGroup] = []
+    private var groups: [Group] = []
     @State
-    private var selectedGroup: TodoGroup = TodoGroup(name: "", todos: [])
+    private var selectedGroup: Group = Group(name: "")
 
     private var handler: () -> Void
 
@@ -59,28 +62,28 @@ struct TodoDetailsView: View {
     }
 
     func add() {
-        do {
-            let todo = TodoEntity(id: nil, name: name)
-            todo.comments = comments
-            todo.$group.id = selectedGroup.id
-            try todo.save(on: DatabaseManager.shared.db).wait()
-            finish()
-        } catch let error{
-            print("Error: \(error)")
+        Task {
+            do {
+                try await container.dbQuery.addNewTodo(name: name, comments: comments, selectedGroup: selectedGroup)
+                Task { @MainActor in
+                    finish()
+                }
+            } catch let error{
+                print("Error: \(error)")
+            }
         }
     }
 
     func edit() {
         Task {
             do {
-                guard let todo = try await TodoEntity.find(editedTodo?.id, on: DatabaseManager.shared.db).get() else {
+                guard let editedTodo else {
                     return
                 }
-                todo.name = name
-                todo.comments = comments
-                todo.$group.id = selectedGroup.id
-                try await  todo.save(on: DatabaseManager.shared.db)
-                finish()
+                try await container.dbQuery.updateTodo(editedTodo, name: name, comments: comments, selectedGroup: selectedGroup)
+                Task { @MainActor in
+                    finish()
+                }
             } catch let error{
                 print("Error: \(error)")
             }
@@ -89,16 +92,12 @@ struct TodoDetailsView: View {
 
     func load() {
         Task{ @MainActor in
-            groups = try await DatabaseManager.shared.db.query(TodoGroupEntity.self)
-                .sort(\.$name, .ascending)
-                .all()
-                .map{ item in
-                    TodoGroup(id: item.id ?? UUID(), name: item.name, todos: [])
-                }
+            groups = try await container.dbQuery.getAllGroups()
+            groups.append(Group(name: ""))
 
-            let selectedGroup: TodoGroup = groups.first{ item in
+            var selectedGroup: Group = groups.first{ item in
                 item.id == editedTodo?.groupId
-            } ?? groups.last ?? TodoGroup(name: "", todos: [])
+            } ?? groups.last ?? Group(name: "")
 
             self.selectedGroup = selectedGroup
         }

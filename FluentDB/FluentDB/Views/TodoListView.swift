@@ -10,6 +10,9 @@ import Combine
 import Fluent
 
 class TodoListViewModel: ObservableObject {
+
+    let container: Container
+
     @Published
     var groups: [TodoGroup] = []
     @Published
@@ -17,7 +20,8 @@ class TodoListViewModel: ObservableObject {
 
     private var subscriptions = Set<AnyCancellable>()
 
-    init(){
+    init(_ container: Container){
+        self.container = container
         $text
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
             .sink{ t in
@@ -28,19 +32,9 @@ class TodoListViewModel: ObservableObject {
 
     func updateGroups() {
         Task { @MainActor in
-            var groups = try await DatabaseManager.shared.db.query(TodoGroupEntity.self)
-                .filter(\.$name ~~ text)
-                .sort(\.$name, .ascending)
-                .with(\.$todos)
-                .all()
-                .map{ item in
-                    TodoGroup(id: item.id ?? UUID(), name: item.name, todos: item.todos.map{$0.dao})
-                }
+            var groups = try await container.dbQuery.getGroups(with: text)
 
-            let todos = try await TodoEntity.query(on: DatabaseManager.shared.db)
-                .filter(\TodoEntity.$group.$id, .equal, .none)
-                .all()
-                .map { $0.dao }
+            let todos = try await container.dbQuery.getTasksWithoutGroup()
 
             groups.append(TodoGroup(id: nil, name: " ", todos: todos))
             self.groups = groups
@@ -51,7 +45,15 @@ class TodoListViewModel: ObservableObject {
 
 struct TodoListView: View {
 
-    @StateObject var vm = TodoListViewModel()
+    @EnvironmentObject
+    private var container: Container
+
+    @StateObject 
+    private var vm: TodoListViewModel
+
+    init(container: Container) {
+        self._vm = StateObject<TodoListViewModel>(wrappedValue: TodoListViewModel(container))
+    }
 
     // MARK: navigation triggers:
 
@@ -132,6 +134,6 @@ struct TodoListView: View {
     }
 }
 
-#Preview {
-    TodoListView()
-}
+//#Preview {
+//    TodoListView(container: <#Container#>)
+//}

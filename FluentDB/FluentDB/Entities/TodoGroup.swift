@@ -8,8 +8,12 @@
 import Foundation
 import FluentKit
 
-struct TodoGroup: Identifiable, Hashable {
+struct Group: Identifiable, Hashable {
+    var id: UUID?
+    var name: String
+}
 
+struct TodoGroup: Identifiable, Hashable {
     var id: UUID?
     var name: String
 

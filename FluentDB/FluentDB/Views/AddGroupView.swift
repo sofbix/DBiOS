@@ -9,6 +9,9 @@ import SwiftUI
 
 struct AddGroupView: View {
 
+    @EnvironmentObject
+    private var container: Container
+
     @Environment(\.presentationMode)
     private var presentationMode
 
@@ -29,15 +32,17 @@ struct AddGroupView: View {
     }
 
     func add() {
-        do {
-            let group = TodoGroupEntity(id: nil, name: name)
-            try group.save(on: DatabaseManager.shared.db).wait()
-        } catch let error{
-            print("Error: \(error)")
+        Task {
+            do {
+                try await container.dbQuery.addNewGroup(name: name)
+            } catch let error{
+                print("Error: \(error)")
+            }
+
+            Task { @MainActor in
+                handler()
+                presentationMode.wrappedValue.dismiss()
+            }
         }
-
-        handler()
-
-        presentationMode.wrappedValue.dismiss()
     }
 }
