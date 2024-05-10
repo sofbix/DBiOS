@@ -9,8 +9,9 @@ import Foundation
 import FluentSQLiteDriver
 import Fluent
 import NIO
+import Core
 
-class DatabaseManager {
+class DatabaseManager: DatabaseProtocol {
 
     private static var threadsCount: Int {
         System.coreCount

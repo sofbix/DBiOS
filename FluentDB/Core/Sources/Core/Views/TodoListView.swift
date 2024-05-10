@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import Fluent
 
 class TodoListViewModel: ObservableObject {
 
@@ -64,7 +63,7 @@ struct TodoListView: View {
     @State
     private var editedTodo: Todo? = nil
 
-    var body: some View {
+    public var body: some View {
         NavigationStack{
             VStack {
                 List(vm.groups) { item in

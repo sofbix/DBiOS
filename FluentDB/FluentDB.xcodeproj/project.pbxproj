@@ -3,22 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		C32BA0802B95079700F33D8F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BA07F2B95079700F33D8F /* DatabaseManager.swift */; };
 		C32BA0852B95154500F33D8F /* TodoGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BA0842B95154500F33D8F /* TodoGroup.swift */; };
-		C32BA0872B95E9A200F33D8F /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BA0862B95E9A200F33D8F /* AddGroupView.swift */; };
 		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
-		C38723162B75488300B66242 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723152B75488300B66242 /* TodoListView.swift */; };
 		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
 		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
 		C38723252B75488500B66242 /* FluentDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723242B75488500B66242 /* FluentDBTests.swift */; };
 		C387232F2B75488500B66242 /* FluentDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387232E2B75488500B66242 /* FluentDBUITests.swift */; };
 		C38723312B75488500B66242 /* FluentDBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723302B75488500B66242 /* FluentDBUITestsLaunchTests.swift */; };
 		C387233F2B75495E00B66242 /* FluentSQLiteDriver in Frameworks */ = {isa = PBXBuildFile; productRef = C387233E2B75495E00B66242 /* FluentSQLiteDriver */; };
-		C38723412B754B5800B66242 /* TodoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723402B754B5800B66242 /* TodoDetailsView.swift */; };
 		C38723442B7553CA00B66242 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C38723432B7553CA00B66242 /* Fluent */; };
 		C38723462B7555AF00B66242 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723452B7555AF00B66242 /* Todo.swift */; };
 		C3A4DA7F2BEAC2320010FD6D /* SwiftDataDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DA7E2BEAC2320010FD6D /* SwiftDataDBApp.swift */; };
@@ -34,6 +31,7 @@
 		C3A4DAB22BED4B850010FD6D /* TodoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAB12BED4B850010FD6D /* TodoDetailsView.swift */; };
 		C3A4DAB42BED4BB40010FD6D /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAB32BED4BB40010FD6D /* AddGroupView.swift */; };
 		C3A4DAB62BEDF4340010FD6D /* FluentDatabaseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAB52BEDF4340010FD6D /* FluentDatabaseQuery.swift */; };
+		C3A4DABB2BEE0B6B0010FD6D /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3A4DABA2BEE0B6B0010FD6D /* Core */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,10 +68,8 @@
 /* Begin PBXFileReference section */
 		C32BA07F2B95079700F33D8F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C32BA0842B95154500F33D8F /* TodoGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroup.swift; sourceTree = "<group>"; };
-		C32BA0862B95E9A200F33D8F /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		C38723102B75488300B66242 /* FluentDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluentDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38723132B75488300B66242 /* FluentDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBApp.swift; sourceTree = "<group>"; };
-		C38723152B75488300B66242 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		C38723172B75488500B66242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C387231A2B75488500B66242 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C38723202B75488500B66242 /* FluentDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluentDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +77,6 @@
 		C387232A2B75488500B66242 /* FluentDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluentDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C387232E2B75488500B66242 /* FluentDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBUITests.swift; sourceTree = "<group>"; };
 		C38723302B75488500B66242 /* FluentDBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C38723402B754B5800B66242 /* TodoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsView.swift; sourceTree = "<group>"; };
 		C38723452B7555AF00B66242 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		C3A4DA7C2BEAC2320010FD6D /* SwiftDataDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDataDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A4DA7E2BEAC2320010FD6D /* SwiftDataDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataDBApp.swift; sourceTree = "<group>"; };
@@ -108,6 +103,7 @@
 			files = (
 				C38723442B7553CA00B66242 /* Fluent in Frameworks */,
 				C387233F2B75495E00B66242 /* FluentSQLiteDriver in Frameworks */,
+				C3A4DABB2BEE0B6B0010FD6D /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,9 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				C38723132B75488300B66242 /* FluentDBApp.swift */,
-				C38723152B75488300B66242 /* TodoListView.swift */,
-				C38723402B754B5800B66242 /* TodoDetailsView.swift */,
-				C32BA0862B95E9A200F33D8F /* AddGroupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,6 +181,7 @@
 				C3A4DA8E2BEAC2330010FD6D /* SwiftDataDBTests */,
 				C3A4DA982BEAC2330010FD6D /* SwiftDataDBUITests */,
 				C38723112B75488300B66242 /* Products */,
+				C3A4DAB92BEE0B6B0010FD6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,6 +300,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C3A4DAB92BEE0B6B0010FD6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -325,6 +326,7 @@
 			packageProductDependencies = (
 				C387233E2B75495E00B66242 /* FluentSQLiteDriver */,
 				C38723432B7553CA00B66242 /* Fluent */,
+				C3A4DABA2BEE0B6B0010FD6D /* Core */,
 			);
 			productName = FluentDB;
 			productReference = C38723102B75488300B66242 /* FluentDB.app */;
@@ -465,6 +467,7 @@
 			packageReferences = (
 				C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */,
 				C38723422B7553CA00B66242 /* XCRemoteSwiftPackageReference "fluent" */,
+				C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */,
 			);
 			productRefGroup = C38723112B75488300B66242 /* Products */;
 			projectDirPath = "";
@@ -534,11 +537,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C32BA0872B95E9A200F33D8F /* AddGroupView.swift in Sources */,
-				C38723162B75488300B66242 /* TodoListView.swift in Sources */,
 				C32BA0802B95079700F33D8F /* DatabaseManager.swift in Sources */,
 				C38723142B75488300B66242 /* FluentDBApp.swift in Sources */,
-				C38723412B754B5800B66242 /* TodoDetailsView.swift in Sources */,
 				C3A4DAB62BEDF4340010FD6D /* FluentDatabaseQuery.swift in Sources */,
 				C32BA0852B95154500F33D8F /* TodoGroup.swift in Sources */,
 				C38723462B7555AF00B66242 /* Todo.swift in Sources */,
@@ -1066,6 +1066,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Core;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1095,6 +1102,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C38723422B7553CA00B66242 /* XCRemoteSwiftPackageReference "fluent" */;
 			productName = Fluent;
+		};
+		C3A4DABA2BEE0B6B0010FD6D /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */;
+			productName = Core;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

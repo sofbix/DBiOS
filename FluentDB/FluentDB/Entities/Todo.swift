@@ -7,15 +7,7 @@
 
 import Foundation
 import FluentKit
-
-struct Todo: Identifiable, Hashable {
-    var id: UUID
-    var name: String
-    var date: String
-    var comments: String?
-    var groupId: UUID?
-    var count: Int
-}
+import Core
 
 final class TodoEntity : Model {
 

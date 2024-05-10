@@ -39,7 +39,7 @@ struct TodoDetailsView: View {
         self.handler = handler
     }
 
-    var body: some View {
+    public var body: some View {
         VStack {
             Form {
                 TextField("Name", text: $name)

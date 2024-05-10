@@ -8,18 +8,6 @@
 import Foundation
 import FluentKit
 
-struct Group: Identifiable, Hashable {
-    var id: UUID?
-    var name: String
-}
-
-struct TodoGroup: Identifiable, Hashable {
-    var id: UUID?
-    var name: String
-
-    var todos: [Todo]
-}
-
 final class TodoGroupEntity : Model {
 
     static var schema: String = "TodoGroup"

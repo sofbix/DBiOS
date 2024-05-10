@@ -7,34 +7,8 @@
 
 import Foundation
 import Fluent
+import Core
 
-protocol TodoProtocol: Identifiable, Hashable {
-    var id: UUID {get}
-    var name: String {get}
-    var date: String {get}
-    var comments: String? {get}
-    var groupId: UUID? {get}
-    var count: Int {get}
-}
-
-protocol TodoGroupProtocol: Identifiable, Hashable {
-    associatedtype Todo: TodoProtocol
-    var id: UUID? {get}
-    var name: String {get}
-    var todos: [Todo] {get}
-}
-
-protocol DatabaseQueryProtocol {
-
-    func getAllGroups() async throws -> [Group]
-    func getGroups(with searchText: String) async throws -> [TodoGroup]
-    func addNewGroup(name: String) async throws
-
-
-    func getTasksWithoutGroup() async throws -> [Todo]
-    func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws
-    func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws
-}
 
 struct FluentDatabaseQuery : DatabaseQueryProtocol {
     let databaseManager: DatabaseManager
