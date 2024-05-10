@@ -16,7 +16,6 @@
 		C387232F2B75488500B66242 /* FluentDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387232E2B75488500B66242 /* FluentDBUITests.swift */; };
 		C38723312B75488500B66242 /* FluentDBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723302B75488500B66242 /* FluentDBUITestsLaunchTests.swift */; };
 		C387233F2B75495E00B66242 /* FluentSQLiteDriver in Frameworks */ = {isa = PBXBuildFile; productRef = C387233E2B75495E00B66242 /* FluentSQLiteDriver */; };
-		C38723442B7553CA00B66242 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C38723432B7553CA00B66242 /* Fluent */; };
 		C38723462B7555AF00B66242 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723452B7555AF00B66242 /* Todo.swift */; };
 		C3A4DA7F2BEAC2320010FD6D /* SwiftDataDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DA7E2BEAC2320010FD6D /* SwiftDataDBApp.swift */; };
 		C3A4DA832BEAC2330010FD6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A4DA822BEAC2330010FD6D /* Assets.xcassets */; };
@@ -101,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C38723442B7553CA00B66242 /* Fluent in Frameworks */,
 				C387233F2B75495E00B66242 /* FluentSQLiteDriver in Frameworks */,
 				C3A4DABB2BEE0B6B0010FD6D /* Core in Frameworks */,
 			);
@@ -325,7 +323,6 @@
 			name = FluentDB;
 			packageProductDependencies = (
 				C387233E2B75495E00B66242 /* FluentSQLiteDriver */,
-				C38723432B7553CA00B66242 /* Fluent */,
 				C3A4DABA2BEE0B6B0010FD6D /* Core */,
 			);
 			productName = FluentDB;
@@ -466,7 +463,6 @@
 			mainGroup = C38723072B75488200B66242;
 			packageReferences = (
 				C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */,
-				C38723422B7553CA00B66242 /* XCRemoteSwiftPackageReference "fluent" */,
 				C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */,
 			);
 			productRefGroup = C38723112B75488300B66242 /* Products */;
@@ -1082,14 +1078,6 @@
 				minimumVersion = 4.6.0;
 			};
 		};
-		C38723422B7553CA00B66242 /* XCRemoteSwiftPackageReference "fluent" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vapor/fluent.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.9.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1097,11 +1085,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */;
 			productName = FluentSQLiteDriver;
-		};
-		C38723432B7553CA00B66242 /* Fluent */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C38723422B7553CA00B66242 /* XCRemoteSwiftPackageReference "fluent" */;
-			productName = Fluent;
 		};
 		C3A4DABA2BEE0B6B0010FD6D /* Core */ = {
 			isa = XCSwiftPackageProductDependency;

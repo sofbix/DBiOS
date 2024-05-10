@@ -7,7 +7,7 @@
 
 import Foundation
 import FluentSQLiteDriver
-import Fluent
+import FluentKit
 import NIO
 import Core
 
