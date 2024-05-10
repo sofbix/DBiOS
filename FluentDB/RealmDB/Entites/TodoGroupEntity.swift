@@ -11,7 +11,7 @@ import RealmSwift
 final class TodoGroupEntity : Object {
 
     @Persisted(primaryKey: true) 
-    var id: String
+    var id: UUID
 
     @Persisted 
     var name: String
@@ -21,7 +21,7 @@ final class TodoGroupEntity : Object {
 
     convenience init(id: UUID = UUID(), name: String) {
         self.init()
-        self.id = id.uuidString
+        self.id = id
         self.name = name
     }
 }

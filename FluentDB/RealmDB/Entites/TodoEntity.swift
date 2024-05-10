@@ -12,7 +12,7 @@ import Core
 final class TodoEntity : Object {
 
     @Persisted (primaryKey: true)
-    var id: String
+    var id: UUID
 
     @Persisted
     var name: String
@@ -30,7 +30,7 @@ final class TodoEntity : Object {
 
     convenience init(id: UUID = UUID(), name: String, date: Date? = Date()) {
         self.init()
-        self.id = id.uuidString
+        self.id = id
         self.name = name
         self.date = date
     }
@@ -40,8 +40,8 @@ final class TodoEntity : Object {
         if let rawDate = self.date {
             date = Self.dateFormatter.string(from: rawDate)
         }
-        let id: UUID = UUID(uuidString: self.id) ?? UUID()
-        let groupId: UUID = UUID(uuidString: self.group?.id ?? "") ?? UUID()
+        let id: UUID = self.id
+        let groupId: UUID = self.group?.id ?? UUID()
         return Todo(id: id, name: self.name, date: date, comments: self.comments, groupId: groupId, count: self.count)
     }
 

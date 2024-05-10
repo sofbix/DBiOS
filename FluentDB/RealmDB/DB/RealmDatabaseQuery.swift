@@ -17,7 +17,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
         return databaseManager.realm.objects(TodoGroupEntity.self)
             .sorted(by: \.name, ascending: true)
             .map { item in
-                let id: UUID = UUID(uuidString: item.id) ?? UUID()
+                let id: UUID = item.id
                 return Group(id: id, name: item.name)
             }
     }
@@ -35,7 +35,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
         return query
             .sorted(by: \.name, ascending: true)
             .map{ item in
-                let id: UUID = UUID(uuidString: item.id) ?? UUID()
+                let id: UUID = item.id
                 return TodoGroup(id: id, name: item.name, todos: item.todos.map{$0.dao})
             }
     }
@@ -77,7 +77,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
     }
 
     private func selectedGroupEntity(_ selectedGroup: Group) -> TodoGroupEntity? {
-        guard let id = selectedGroup.id?.uuidString else {
+        guard let id = selectedGroup.id else {
             return nil
         }
         return databaseManager.realm.object(ofType: TodoGroupEntity.self, forPrimaryKey: id)
