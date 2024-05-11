@@ -33,6 +33,13 @@ public struct PerformanceView: View {
     @State
     private var tasksCount: Int = 0
 
+    @State
+    private var iterationCount: Int = 10_000
+    @State
+    private var isCalculateAddingGroupsMain: Bool = true
+    @State
+    private var isCalculateAddingGroupsBackground: Bool = true
+
     public var body: some View {
         NavigationStack{
             VStack {
@@ -41,6 +48,16 @@ public struct PerformanceView: View {
                     Section(header: Text("Counts:")) {
                         Text("Groups: \(groupsCount)")
                         Text("Tasks: \(tasksCount)")
+                    }
+                    Section(header: Text("Calculation options:")) {
+                        HStack {
+                            Text("Iteration Count")
+                            TextField("number", value: $iterationCount, format: .number)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
+                        }
+                        Toggle("Adding Groups on Main", isOn: $isCalculateAddingGroupsMain)
+                        Toggle("Adding Groups on Background", isOn: $isCalculateAddingGroupsBackground)
                     }
                     Section(header: Text("Results of performance:")) {
                         ForEach(comments) { item in
@@ -88,7 +105,13 @@ public struct PerformanceView: View {
         Task {@MainActor in
             isCalculation = true
             Task {
-                try await addGroups()
+                if isCalculateAddingGroupsMain {
+                    try await addGroupsMain()
+                }
+                if isCalculateAddingGroupsBackground {
+                    try await addGroupsBack()
+                }
+                stop()
             }
         }
     }
@@ -114,42 +137,51 @@ extension PerformanceView {
 
 
 
-    func addGroups() async throws {
-        title = "Adding 10K Groups on Main Thread"
-        let count = 10_000
-
+    func addGroupsMain() async throws {
+        let count = iterationCount
         var startDate = Date()
+
+        await MainActor.run {
+            title = "Adding 10K Groups on One Thread"
+            startDate = Date()
+        }
 
         for i in 1...count{
             try await container.dbQuery.addNewGroup(name: "Group \(i)")
         }
 
-        @MainActor func exit() {
+        await MainActor.run {
             let sec = Date().timeIntervalSince(startDate)
             let frequency: Double = Double(count) / sec
-            comments.append("10K Groups on Main Thread frequency (count per second): \(frequency)")
-            stop()
+            comments.append("10K Groups on One Thread frequency (count per second): \(frequency)")
         }
 
-        exit()
+    }
 
-//        try await withThrowingTaskGroup(of: Void.self) { group in
-//            for i in 1...count{
-//                group.addTask {
-//                    await try container.dbQuery.addNewGroup(name: "Group \(i)")
-//                }
-//            }
-//
-//            try await group.waitForAll()
-//
-//            @MainActor func exit() {
-//                let sec = Date().timeIntervalSince(startDate)
-//                let frequency: Double = Double(count) / sec
-//                comments.append("1M Groups on Main Thread frequency (count per second): \(frequency)")
-//                stop()
-//            }
-//
-//            exit()
-//        }
+    func addGroupsBack() async throws {
+        let count = iterationCount
+        var startDate = Date()
+
+        await MainActor.run {
+            title = "Adding 10K Groups on Groups Threads"
+            startDate = Date()
+        }
+
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            for i in 1...count{
+                group.addTask {
+                    await try container.dbQuery.addNewGroup(name: "Group \(i)")
+                }
+            }
+
+            try await group.waitForAll()
+
+            await MainActor.run {
+                let sec = Date().timeIntervalSince(startDate)
+                let frequency: Double = Double(count) / sec
+                comments.append("10K Groups on Groups Threads frequency (count per second): \(frequency)")
+                stop()
+            }
+        }
     }
 }
