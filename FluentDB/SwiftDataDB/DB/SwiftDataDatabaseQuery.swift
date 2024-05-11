@@ -85,6 +85,21 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
+    func getTasks(with searchText: String) async throws -> [Todo] {
+        let newContext = ModelContext(DatabaseManager.shared.container)
+        let todosPredicate = #Predicate<TodoEntity>{ entity in
+            entity.name.contains(searchText) || searchText.isEmpty
+        }
+        let todosDescriptor = FetchDescriptor<TodoEntity>(
+            predicate: todosPredicate,
+            sortBy: [SortDescriptor(\.name)]
+        )
+        let todos = try newContext
+            .fetch(todosDescriptor)
+            .map { $0.dao }
+        return todos
+    }
+
     func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws {
         let modelContext = ModelContext(DatabaseManager.shared.container)
         let todo = TodoEntity(id: nil, name: name)

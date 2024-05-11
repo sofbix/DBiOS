@@ -14,13 +14,13 @@ final class TodoEntity : Object {
     @Persisted (primaryKey: true)
     var id: UUID
 
-    @Persisted
+    @Persisted(indexed: true)
     var name: String
 
     @Persisted 
     var comments: String?
 
-    @Persisted 
+    @Persisted(indexed: true)
     var date: Date?
 
     @Persisted

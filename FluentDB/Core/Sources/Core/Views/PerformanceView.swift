@@ -39,6 +39,12 @@ public struct PerformanceView: View {
     private var isCalculateAddingGroupsOneThread: Bool = true
     @State
     private var isCalculateAddingGroupsManyThreads: Bool = true
+    @State
+    private var isCalculateReadingGroups: Bool = true
+    @State
+    private var isCalculateAddingTodos: Bool = true
+    @State
+    private var isCalculateReadingTodos: Bool = true
 
     public var body: some View {
         NavigationStack{
@@ -58,6 +64,9 @@ public struct PerformanceView: View {
                         }
                         Toggle("Adding Groups on One Thread", isOn: $isCalculateAddingGroupsOneThread)
                         Toggle("Adding Groups on Many Threads", isOn: $isCalculateAddingGroupsManyThreads)
+                        Toggle("Reading Groups", isOn: $isCalculateReadingGroups)
+                        Toggle("Adding Todos", isOn: $isCalculateAddingTodos)
+                        Toggle("Reading Todos", isOn: $isCalculateReadingTodos)
                     }
                     Section(header: Text("Results of performance:")) {
                         ForEach(comments) { item in
@@ -111,6 +120,15 @@ public struct PerformanceView: View {
                 if isCalculateAddingGroupsManyThreads {
                     try await addGroupsManyThreads()
                 }
+                if isCalculateReadingGroups {
+                    try await readGroups()
+                }
+                if isCalculateAddingTodos {
+                    try await addTodos()
+                }
+                if isCalculateReadingTodos {
+                    try await readTodos()
+                }
                 stop()
             }
         }
@@ -135,27 +153,32 @@ public struct PerformanceView: View {
 extension PerformanceView {
 
 
-
-
-    func addGroupsOneThread() async throws {
+    func calculateFrequency(_ title: String, handle: (_ index: Int) async throws -> Void) async throws {
         let count = iterationCount
         var startDate = Date()
 
         await MainActor.run {
-            title = "Adding \(count) Groups on One Thread"
+            self.title = title
             startDate = Date()
         }
 
         for i in 1...count{
-            try await container.dbQuery.addNewGroup(name: "Group \(i)")
+            try await handle(i)
         }
 
         await MainActor.run {
             let sec = Date().timeIntervalSince(startDate)
             let frequency: Double = Double(count) / sec
-            comments.append("\(count) Groups on One Thread frequency (count per second): \(frequency)")
+            comments.append("\(title) frequency (count per second): \(frequency)")
         }
 
+    }
+
+
+    func addGroupsOneThread() async throws {
+        try await calculateFrequency("Adding \(iterationCount) Groups on One Thread") { index in
+            try await container.dbQuery.addNewGroup(name: "Group \(index)")
+        }
     }
 
     func addGroupsManyThreads() async throws {
@@ -182,6 +205,24 @@ extension PerformanceView {
                 comments.append("\(count) Groups on Groups Threads frequency (count per second): \(frequency)")
                 stop()
             }
+        }
+    }
+
+    func readGroups() async throws {
+        try await calculateFrequency("Reading random \(iterationCount) Groups") { index in
+            try await container.dbQuery.getGroups(with: UUID().uuidString)
+        }
+    }
+
+    func addTodos() async throws {
+        try await calculateFrequency("Adding \(iterationCount) Todos") { index in
+            try await container.dbQuery.addNewTodo(name: "Todo \(index)", comments: "Empty", selectedGroup: Group(name: ""))
+        }
+    }
+
+    func readTodos() async throws {
+        try await calculateFrequency("Reading random \(iterationCount) Todos") { index in
+            try await container.dbQuery.getTasks(with: UUID().uuidString)
         }
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import FluentKit
 import Core
+import SQLKit
 
 final class TodoEntity : Model {
 
@@ -98,4 +99,58 @@ struct GroupTodoEntity: AsyncMigration {
             .deleteField("group_id")
             .update()
     }
+}
+
+struct CreateTodoNameIndex: AsyncMigration {
+
+    func prepare(on database: Database) async throws {
+        try await (database as! SQLDatabase)
+            .create(index: "todo_name_index")
+            .on(TodoEntity.schema)
+            .column("name")
+            .run()
+    }
+
+    func revert(on database: Database) async throws {
+        try await (database as! SQLDatabase)
+            .drop(index: "todo_name_index")
+            .run()
+    }
+
+}
+
+struct CreateTodoDateIndex: AsyncMigration {
+
+    func prepare(on database: Database) async throws {
+        try await (database as! SQLDatabase)
+            .create(index: "todo_date_index")
+            .on(TodoEntity.schema)
+            .column("date")
+            .run()
+    }
+
+    func revert(on database: Database) async throws {
+        try await (database as! SQLDatabase)
+            .drop(index: "todo_date_index")
+            .run()
+    }
+
+}
+
+struct CreateTodoGroupIndex: AsyncMigration {
+
+    func prepare(on database: Database) async throws {
+        try await (database as! SQLDatabase)
+            .create(index: "todo_group_id_index")
+            .on(TodoEntity.schema)
+            .column("group_id")
+            .run()
+    }
+
+    func revert(on database: Database) async throws {
+        try await (database as! SQLDatabase)
+            .drop(index: "todo_group_id_index")
+            .run()
+    }
+
 }

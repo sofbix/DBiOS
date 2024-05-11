@@ -60,6 +60,15 @@ struct FluentDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
+    func getTasks(with searchText: String) async throws -> [Todo] {
+        let tasks = try await databaseManager.db.query(TodoEntity.self)
+            .filter(\.$name ~~ searchText)
+            .sort(\.$name, .ascending)
+            .all()
+            .map { $0.dao }
+        return tasks
+    }
+
     func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws {
         let todo = TodoEntity(id: nil, name: name)
         todo.comments = comments

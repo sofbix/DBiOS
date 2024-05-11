@@ -15,12 +15,15 @@ final class TodoEntity {
     @Attribute(.unique)
     var id: UUID?
 
+    @Attribute(.spotlight)
     var name: String
 
     var comments: String?
 
+    @Attribute(.spotlight)
     var group: TodoGroupEntity?
 
+    @Attribute(.spotlight)
     var date: Date?
 
     @Transient

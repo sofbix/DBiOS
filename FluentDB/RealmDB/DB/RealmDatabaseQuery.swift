@@ -69,6 +69,21 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             .map { $0.dao }
     }
 
+    func getTasks(with searchText: String) async throws -> [Todo] {
+        var query = databaseManager.realm.objects(TodoEntity.self)
+
+        if !searchText.isEmpty {
+            query = query
+                .where {
+                    $0.name.contains(searchText)
+                }
+        }
+
+        return query
+            .sorted(by: \.name, ascending: true)
+            .map { $0.dao }
+    }
+
     func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws {
         let todo = TodoEntity(name: name)
         todo.comments = comments
