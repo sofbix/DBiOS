@@ -36,9 +36,9 @@ public struct PerformanceView: View {
     @State
     private var iterationCount: Int = 10_000
     @State
-    private var isCalculateAddingGroupsMain: Bool = true
+    private var isCalculateAddingGroupsOneThread: Bool = true
     @State
-    private var isCalculateAddingGroupsBackground: Bool = true
+    private var isCalculateAddingGroupsManyThreads: Bool = true
 
     public var body: some View {
         NavigationStack{
@@ -56,8 +56,8 @@ public struct PerformanceView: View {
                                 .textFieldStyle(.roundedBorder)
                                 .padding()
                         }
-                        Toggle("Adding Groups on Main", isOn: $isCalculateAddingGroupsMain)
-                        Toggle("Adding Groups on Background", isOn: $isCalculateAddingGroupsBackground)
+                        Toggle("Adding Groups on One Thread", isOn: $isCalculateAddingGroupsOneThread)
+                        Toggle("Adding Groups on Many Threads", isOn: $isCalculateAddingGroupsManyThreads)
                     }
                     Section(header: Text("Results of performance:")) {
                         ForEach(comments) { item in
@@ -105,11 +105,11 @@ public struct PerformanceView: View {
         Task {@MainActor in
             isCalculation = true
             Task {
-                if isCalculateAddingGroupsMain {
-                    try await addGroupsMain()
+                if isCalculateAddingGroupsOneThread {
+                    try await addGroupsOneThread()
                 }
-                if isCalculateAddingGroupsBackground {
-                    try await addGroupsBack()
+                if isCalculateAddingGroupsManyThreads {
+                    try await addGroupsManyThreads()
                 }
                 stop()
             }
@@ -137,12 +137,12 @@ extension PerformanceView {
 
 
 
-    func addGroupsMain() async throws {
+    func addGroupsOneThread() async throws {
         let count = iterationCount
         var startDate = Date()
 
         await MainActor.run {
-            title = "Adding 10K Groups on One Thread"
+            title = "Adding \(count) Groups on One Thread"
             startDate = Date()
         }
 
@@ -153,17 +153,17 @@ extension PerformanceView {
         await MainActor.run {
             let sec = Date().timeIntervalSince(startDate)
             let frequency: Double = Double(count) / sec
-            comments.append("10K Groups on One Thread frequency (count per second): \(frequency)")
+            comments.append("\(count) Groups on One Thread frequency (count per second): \(frequency)")
         }
 
     }
 
-    func addGroupsBack() async throws {
+    func addGroupsManyThreads() async throws {
         let count = iterationCount
         var startDate = Date()
 
         await MainActor.run {
-            title = "Adding 10K Groups on Groups Threads"
+            title = "Adding \(count) Groups on Groups Threads"
             startDate = Date()
         }
 
@@ -179,7 +179,7 @@ extension PerformanceView {
             await MainActor.run {
                 let sec = Date().timeIntervalSince(startDate)
                 let frequency: Double = Double(count) / sec
-                comments.append("10K Groups on Groups Threads frequency (count per second): \(frequency)")
+                comments.append("\(count) Groups on Groups Threads frequency (count per second): \(frequency)")
                 stop()
             }
         }
