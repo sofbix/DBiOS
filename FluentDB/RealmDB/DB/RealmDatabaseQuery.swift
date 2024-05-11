@@ -13,6 +13,10 @@ import Core
 struct RealmDatabaseQuery : DatabaseQueryProtocol {
     let databaseManager: DatabaseManager
 
+    func getAllGroupsCount() async throws -> Int {
+        databaseManager.realm.objects(TodoGroupEntity.self).count
+    }
+
     func getAllGroups() async throws -> [Group] {
         return databaseManager.realm.objects(TodoGroupEntity.self)
             .sorted(by: \.name, ascending: true)
@@ -43,6 +47,18 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
         try databaseManager.realm.write{
             databaseManager.realm.add(group)
         }
+    }
+
+    func removeAllGroups() async throws {
+        let realm = databaseManager.realm
+        try realm.write{
+            let objects = realm.objects(TodoGroupEntity.self)
+            realm.delete(objects)
+        }
+    }
+
+    func getAllTasksCount() async throws -> Int {
+        databaseManager.realm.objects(TodoEntity.self).count
     }
 
     func getTasksWithoutGroup() async throws -> [Todo] {
@@ -79,5 +95,13 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             return nil
         }
         return databaseManager.realm.object(ofType: TodoGroupEntity.self, forPrimaryKey: id)
+    }
+
+    func removeAllTodos() async throws {
+        let realm = databaseManager.realm
+        try realm.write{
+            let objects = realm.objects(TodoEntity.self)
+            realm.delete(objects)
+        }
     }
 }

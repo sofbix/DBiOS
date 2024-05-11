@@ -13,6 +13,10 @@ import Core
 struct FluentDatabaseQuery : DatabaseQueryProtocol {
     let databaseManager: DatabaseManager
 
+    func getAllGroupsCount() async throws -> Int {
+        try await databaseManager.db.query(TodoGroupEntity.self).count()
+    }
+
     func getAllGroups() async throws -> [Group] {
         let groups = try await databaseManager.db.query(TodoGroupEntity.self)
             .sort(\.$name, .ascending)
@@ -40,6 +44,14 @@ struct FluentDatabaseQuery : DatabaseQueryProtocol {
         try await group.save(on: DatabaseManager.shared.db)
     }
 
+    func removeAllGroups() async throws {
+        try await databaseManager.db.query(TodoGroupEntity.self).delete()
+    }
+
+    func getAllTasksCount() async throws -> Int {
+        try await databaseManager.db.query(TodoEntity.self).count()
+    }
+
     func getTasksWithoutGroup() async throws -> [Todo] {
         let todos = try await TodoEntity.query(on: DatabaseManager.shared.db)
             .filter(\TodoEntity.$group.$id, .equal, .none)
@@ -63,5 +75,9 @@ struct FluentDatabaseQuery : DatabaseQueryProtocol {
         todo.comments = comments
         todo.$group.id = selectedGroup.id
         try await todo.save(on: DatabaseManager.shared.db)
+    }
+
+    func removeAllTodos() async throws {
+        try await databaseManager.db.query(TodoEntity.self).delete()
     }
 }

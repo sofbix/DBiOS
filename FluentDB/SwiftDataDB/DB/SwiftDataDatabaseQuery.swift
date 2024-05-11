@@ -10,7 +10,13 @@ import SwiftData
 import Core
 
 struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
+    
     let databaseManager: DatabaseManager
+
+    func getAllGroupsCount() async throws -> Int {
+        let newContext = ModelContext(DatabaseManager.shared.container)
+        return try newContext.fetchCount(FetchDescriptor<TodoGroupEntity>())
+    }
 
     func getAllGroups() async throws -> [Group] {
         let newContext = ModelContext(DatabaseManager.shared.container)
@@ -52,6 +58,16 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         let group = TodoGroupEntity(id: nil, name: name)
         modelContext.insert(group)
         try modelContext.save()
+    }
+
+    func removeAllGroups() async throws {
+        let newContext = ModelContext(DatabaseManager.shared.container)
+        try newContext.delete(model: TodoGroupEntity.self)
+    }
+
+    func getAllTasksCount() async throws -> Int {
+        let newContext = ModelContext(DatabaseManager.shared.container)
+        return try newContext.fetchCount(FetchDescriptor<TodoEntity>())
     }
 
     func getTasksWithoutGroup() async throws -> [Todo] {
@@ -101,6 +117,11 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
             return nil
         }
         return group
+    }
+
+    func removeAllTodos() async throws {
+        let newContext = ModelContext(DatabaseManager.shared.container)
+        try newContext.delete(model: TodoEntity.self)
     }
 
 }

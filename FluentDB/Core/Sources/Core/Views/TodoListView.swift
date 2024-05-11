@@ -66,6 +66,7 @@ struct TodoListView: View {
     public var body: some View {
         NavigationStack{
             VStack {
+                buttonPanel
                 List(vm.groups) { item in
                     Section(header: Text(item.name)) {
                         ForEach(item.todos) { item in
@@ -74,8 +75,9 @@ struct TodoListView: View {
                     }
                 }
                 .listStyle(.grouped)
-                buttonPanel
             }
+            .navigationTitle("Demo Todo List")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .searchable(text: $vm.text)
         .onAppear{

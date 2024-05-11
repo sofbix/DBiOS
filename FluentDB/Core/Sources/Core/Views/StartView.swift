@@ -20,7 +20,7 @@ public struct StartView: View {
 
     public var body: some View {
         if isLoaded {
-            TodoListView(container: container)
+            MainView()
                 .environmentObject(container)
         } else {
             Text("Loading...").onAppear {

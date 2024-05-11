@@ -19,14 +19,17 @@ final public class Container: ObservableObject {
 
 public protocol DatabaseQueryProtocol {
 
+    func getAllGroupsCount() async throws -> Int
     func getAllGroups() async throws -> [Group]
     func getGroups(with searchText: String) async throws -> [TodoGroup]
     func addNewGroup(name: String) async throws
+    func removeAllGroups() async throws
 
-
+    func getAllTasksCount() async throws -> Int
     func getTasksWithoutGroup() async throws -> [Todo]
     func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws
     func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws
+    func removeAllTodos() async throws
 }
 
 public protocol DatabaseProtocol {
