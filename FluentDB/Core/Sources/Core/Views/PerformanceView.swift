@@ -22,7 +22,7 @@ struct Comment: Identifiable {
         self.frequency = frequency
     }
 
-    enum Group {
+    enum Group: String {
         case addGroup, readGroup, addTodo, readTodo
     }
 }
@@ -38,6 +38,9 @@ public struct PerformanceView: View {
 
     @EnvironmentObject
     private var container: Container
+
+    @State
+    private var isShowSharing: Bool = false
 
     @State
     private var comments: [Comment] = []
@@ -70,6 +73,10 @@ public struct PerformanceView: View {
     private var isCalculateAddingTodos: Bool = true
     @State
     private var isCalculateReadingTodos: Bool = true
+
+    private static let sharedName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "shared"
+
+    private let sharedPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("\(sharedName).csv")!
 
     public var body: some View {
         NavigationStack{
@@ -122,6 +129,9 @@ public struct PerformanceView: View {
                     try await calculateCounts()
                 }
             }
+            .sheet(isPresented: $isShowSharing) {
+                ActivityView(items: [sharedPath])
+            }
         }
     }
 
@@ -136,6 +146,10 @@ public struct PerformanceView: View {
             Spacer()
             Button("Start"){
                 start()
+            }
+            Spacer()
+            Button("Share"){
+                share()
             }
             Spacer()
         }.disabled(isCalculation)
@@ -274,4 +288,50 @@ extension PerformanceView {
             try await container.dbQuery.getTasks(with: UUID().uuidString)
         }
     }
+}
+
+extension PerformanceView {
+    func share() {
+        try? FileManager.default.removeItem(at: sharedPath)
+        var headers: [Comment.Group] = []
+        for comment in comments {
+            let isFound = headers.contains { item in
+                item == comment.group
+            }
+            if !isFound {
+                headers.append(comment.group)
+            }
+        }
+
+        var result = "number;"
+        for header in headers {
+            result += header.rawValue + ";"
+            result += "totalCount;"
+            result += "frequency;"
+        }
+
+        result += "\n"
+
+        for (index, comment) in comments.enumerated() {
+            if index % headers.count == 0 {
+                let number = index / headers.count + 1
+                result += "\(number);"
+            }
+            result += comment.comments.replacingOccurrences(of: "\n", with: "") + ";"
+            result += "\(comment.totalCount)" + ";"
+            result += "\(comment.frequency)" + ";"
+            if index % headers.count == headers.count - 1 {
+                result += "\n"
+            }
+        }
+
+        do {
+            try result.write(to: sharedPath, atomically: true, encoding: .utf8)
+        } catch let error {
+            print("Error sharing: \(error)")
+        }
+
+        isShowSharing = true
+    }
+
 }
