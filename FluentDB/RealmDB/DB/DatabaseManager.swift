@@ -24,6 +24,7 @@ class DatabaseManager: DatabaseProtocol {
 
     init() {
         realmURL = Self.getDocumentsDirectory().appendingPathComponent("realm.db", isDirectory: false)
+        print(realmURL.absoluteString)
         configuration = Self.realmConfiguration(fileURL: realmURL)
     }
 
