@@ -28,7 +28,9 @@ public protocol DatabaseQueryProtocol {
     func getAllTasksCount() async throws -> Int
     func getTasksWithoutGroup() async throws -> [Todo]
     func getTasks(with searchText: String) async throws -> [Todo]
-    func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws
+    func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo]
+    func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo]
+    func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Group) async throws
     func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws
     func removeAllTodos() async throws
 }

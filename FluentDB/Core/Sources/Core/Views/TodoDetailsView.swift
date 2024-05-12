@@ -64,7 +64,7 @@ struct TodoDetailsView: View {
     func add() {
         Task {
             do {
-                try await container.dbQuery.addNewTodo(name: name, comments: comments, selectedGroup: selectedGroup)
+                try await container.dbQuery.addNewTodo(name: name, comments: comments, date: Date(), priority: nil, selectedGroup: selectedGroup)
                 Task { @MainActor in
                     finish()
                 }

@@ -23,7 +23,7 @@ struct Comment: Identifiable {
     }
 
     enum Group: String {
-        case addGroup, readGroup, addTodo, readTodo
+        case addGroup, readGroup, addTodo, readTodoWithName, readTodoWithDate, readTodoWithPriority
     }
 }
 
@@ -35,6 +35,8 @@ extension Task where Success == Never, Failure == Never {
 }
 
 public struct PerformanceView: View {
+
+    static let weekMinutes: Int = 7*24*60
 
     @EnvironmentObject
     private var container: Container
@@ -72,7 +74,11 @@ public struct PerformanceView: View {
     @State
     private var isCalculateAddingTodos: Bool = true
     @State
-    private var isCalculateReadingTodos: Bool = true
+    private var isCalculateReadingTodosWithName: Bool = true
+    @State
+    private var isCalculateReadingTodosWithDate: Bool = true
+    @State
+    private var isCalculateReadingTodosWithPriority: Bool = true
 
     private static let sharedName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "shared"
 
@@ -112,7 +118,9 @@ public struct PerformanceView: View {
                         Toggle("Adding Groups", isOn: $isCalculateAddingGroups)
                         Toggle("Reading Groups", isOn: $isCalculateReadingGroups)
                         Toggle("Adding Todos", isOn: $isCalculateAddingTodos)
-                        Toggle("Reading Todos", isOn: $isCalculateReadingTodos)
+                        Toggle("Reading Todos with Name", isOn: $isCalculateReadingTodosWithName)
+                        Toggle("Reading Todos with Date", isOn: $isCalculateReadingTodosWithDate)
+                        Toggle("Reading Todos with Priority", isOn: $isCalculateReadingTodosWithPriority)
                     }
                     Section(header: Text("Results of performance:")) {
                         ForEach(comments) { item in
@@ -179,8 +187,14 @@ public struct PerformanceView: View {
                     if isCalculateAddingTodos {
                         try await addTodos(repeatIndex)
                     }
-                    if isCalculateReadingTodos {
-                        try await readTodos(repeatIndex)
+                    if isCalculateReadingTodosWithName {
+                        try await readTodosWithName(repeatIndex)
+                    }
+                    if isCalculateReadingTodosWithDate {
+                        try await readTodosWithDate(repeatIndex)
+                    }
+                    if isCalculateReadingTodosWithPriority {
+                        try await readTodosWithPriority(repeatIndex)
                     }
                 }
                 stop()
@@ -249,7 +263,7 @@ extension PerformanceView {
                 totalCount = self.groupsCount
             case .addTodo:
                 totalCount = self.todosCount
-            case .readTodo:
+            case .readTodoWithName, .readTodoWithDate, .readTodoWithPriority:
                 totalCount = self.todosCount
             }
 
@@ -279,13 +293,33 @@ extension PerformanceView {
 
     func addTodos(_ repeatIndex: Int) async throws {
         try await calculateFrequency(title: "\(repeatIndex). Adding \(iterationCount) Todos", group: .addTodo) { index in
-            try await container.dbQuery.addNewTodo(name: "Todo \(index)", comments: "Empty", selectedGroup: Group(name: ""))
+            var date = Date()
+            let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
+            date.addTimeInterval(aditionHours * 60.0)
+            let priority = Int.random(in: 0..<1000)
+            try await container.dbQuery.addNewTodo(name: "Todo \(index)", comments: "Empty", date: date, priority: priority, selectedGroup: Group(name: ""))
         }
     }
 
-    func readTodos(_ repeatIndex: Int) async throws {
-        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos", group: .readTodo) { index in
+    func readTodosWithName(_ repeatIndex: Int) async throws {
+        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Name", group: .readTodoWithName) { index in
             try await container.dbQuery.getTasks(with: UUID().uuidString)
+        }
+    }
+
+    func readTodosWithDate(_ repeatIndex: Int) async throws {
+        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Date", group: .readTodoWithDate) { index in
+            var date = Date()
+            let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
+            date.addTimeInterval(aditionHours * 60.0)
+            try await container.dbQuery.getTasks(startDate: date.addingTimeInterval(-600), stopDate: date.addingTimeInterval(600))
+        }
+    }
+
+    func readTodosWithPriority(_ repeatIndex: Int) async throws {
+        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Priority", group: .readTodoWithPriority) { index in
+            let priority = Int.random(in: 0..<1000)
+            try await container.dbQuery.getTasks(startPriority: priority, stopPriority: priority + 1)
         }
     }
 }

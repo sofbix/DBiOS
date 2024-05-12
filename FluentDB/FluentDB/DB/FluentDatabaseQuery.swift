@@ -69,8 +69,28 @@ struct FluentDatabaseQuery : DatabaseQueryProtocol {
         return tasks
     }
 
-    func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws {
-        let todo = TodoEntity(id: nil, name: name)
+    func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo] {
+        let tasks = try await databaseManager.db.query(TodoEntity.self)
+            .filter(\.$date > startDate)
+            .filter(\.$date < stopDate)
+            .sort(\.$date)
+            .all()
+            .map { $0.dao }
+        return tasks
+    }
+
+    func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo] {
+        let tasks = try await databaseManager.db.query(TodoEntity.self)
+            .filter(\.$priority >= startPriority)
+            .filter(\.$priority <= stopPriority)
+            .sort(\.$priority)
+            .all()
+            .map { $0.dao }
+        return tasks
+    }
+
+    func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Group) async throws {
+        let todo = TodoEntity(id: nil, name: name, date: date, priority: priority)
         todo.comments = comments
         todo.$group.id = selectedGroup.id
         try await todo.save(on: DatabaseManager.shared.db)

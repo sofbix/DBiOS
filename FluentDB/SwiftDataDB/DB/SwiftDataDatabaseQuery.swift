@@ -87,9 +87,12 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
 
     func getTasks(with searchText: String) async throws -> [Todo] {
         let newContext = ModelContext(DatabaseManager.shared.container)
-        let todosPredicate = #Predicate<TodoEntity>{ entity in
-            entity.name.contains(searchText) || searchText.isEmpty
-        }
+        let todosPredicate = searchText.isEmpty == false ?
+        #Predicate<TodoEntity>{ entity in
+            entity.name.contains(searchText)
+        } 
+        :
+        #Predicate<TodoEntity>{_ in true }
         let todosDescriptor = FetchDescriptor<TodoEntity>(
             predicate: todosPredicate,
             sortBy: [SortDescriptor(\.name)]
@@ -100,9 +103,50 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
-    func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws {
+    func getTasks(startDate: Date, stopDate: Date) async throws -> [Core.Todo] {
+        let newContext = ModelContext(DatabaseManager.shared.container)
+        let todosPredicate = #Predicate<TodoEntity>{ entity in
+            if let date = entity.date {
+                return date > startDate && date < stopDate
+            } else {
+                return false
+            }
+        }
+        let todosDescriptor = FetchDescriptor<TodoEntity>(
+            predicate: todosPredicate,
+            sortBy: [SortDescriptor(\.date)]
+        )
+        let todos = try newContext
+            .fetch(todosDescriptor)
+            .map { $0.dao }
+        return todos
+    }
+
+    func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Core.Todo] {
+        let newContext = ModelContext(DatabaseManager.shared.container)
+//        let todosPredicate = #Predicate<TodoEntity>{ entity in
+//            if let priority = entity.priority {
+//                return priority >= startPriority && priority <= stopPriority
+//            } else {
+//                return false
+//            }
+//        }
+        let todosPredicate = #Predicate<TodoEntity>{ entity in
+            entity.priority == startPriority
+        }
+        let todosDescriptor = FetchDescriptor<TodoEntity>(
+            predicate: todosPredicate,
+            sortBy: [SortDescriptor(\.priority)]
+        )
+        let todos = try newContext
+            .fetch(todosDescriptor)
+            .map { $0.dao }
+        return todos
+    }
+
+    func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Core.Group) async throws {
         let modelContext = ModelContext(DatabaseManager.shared.container)
-        let todo = TodoEntity(id: nil, name: name)
+        let todo = TodoEntity(id: nil, name: name, date: date, priority: priority)
         todo.comments = comments
         todo.group = selectedGroupEntity(modelContext, selectedGroup: selectedGroup)
         modelContext.insert(todo)

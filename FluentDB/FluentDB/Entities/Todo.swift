@@ -29,12 +29,16 @@ final class TodoEntity : Model {
     @OptionalParent(key: "group_id")
     var group: TodoGroupEntity?
 
+    @OptionalField(key: "priority")
+    var priority: Int?
+
     var count: Int = 0
 
-    init(id: UUID? = nil, name: String, date: Date? = Date()) {
+    init(id: UUID? = nil, name: String, date: Date? = Date(), priority: Int? = nil) {
         self.id = id
         self.name = name
         self.date = date
+        self.priority = priority
     }
 
     init() {
@@ -153,4 +157,28 @@ struct CreateTodoGroupIndex: AsyncMigration {
             .run()
     }
 
+}
+
+struct PriorityTodoEntity: AsyncMigration {
+
+    func prepare(on database: Database) async throws {
+        try await database.schema(TodoEntity.schema)
+            .ignoreExisting()
+            .field("priority", .int)
+            .update()
+        try await (database as! SQLDatabase)
+            .create(index: "todo_priority_index")
+            .on(TodoEntity.schema)
+            .column("priority")
+            .run()
+    }
+
+    func revert(on database: Database) async throws {
+        try await database.schema(TodoEntity.schema)
+            .deleteField("priority")
+            .update()
+        try await (database as! SQLDatabase)
+            .drop(index: "todo_priority_index")
+            .run()
+    }
 }

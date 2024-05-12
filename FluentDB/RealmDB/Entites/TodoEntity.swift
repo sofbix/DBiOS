@@ -23,16 +23,20 @@ final class TodoEntity : Object {
     @Persisted(indexed: true)
     var date: Date?
 
+    @Persisted(indexed: true)
+    var priority: Int?
+
     @Persisted
     var group: TodoGroupEntity?
 
     var count: Int = 0
 
-    convenience init(id: UUID = UUID(), name: String, date: Date? = Date()) {
+    convenience init(id: UUID = UUID(), name: String, date: Date? = Date(), priority: Int? = nil) {
         self.init()
         self.id = id
         self.name = name
         self.date = date
+        self.priority = priority
     }
 
     var dao: Todo {

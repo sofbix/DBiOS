@@ -11,6 +11,7 @@ import Core
 
 
 struct RealmDatabaseQuery : DatabaseQueryProtocol {
+    
     let databaseManager: DatabaseManager
 
     func getAllGroupsCount() async throws -> Int {
@@ -84,8 +85,31 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             .map { $0.dao }
     }
 
-    func addNewTodo(name: String, comments: String, selectedGroup: Group) async throws {
-        let todo = TodoEntity(name: name)
+    func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo] {
+        let query = databaseManager.realm.objects(TodoEntity.self)
+            .where {
+                $0.date > startDate && $0.date < stopDate
+            }
+
+        return query
+            .sorted(by: \.date)
+            .map { $0.dao }
+    }
+
+    func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo] {
+        let query = databaseManager.realm.objects(TodoEntity.self)
+            //.filter("priority >= %@ && priority <= %@", startPriority, stopPriority)
+            .where {
+                $0.priority >= startPriority && $0.priority <= stopPriority
+            }
+
+        return query
+            .sorted(by: \.priority)
+            .map { $0.dao }
+    }
+
+    func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Group) async throws {
+        let todo = TodoEntity(name: name, date: date, priority: priority)
         todo.comments = comments
         todo.group = selectedGroupEntity(selectedGroup)
         try databaseManager.realm.write{

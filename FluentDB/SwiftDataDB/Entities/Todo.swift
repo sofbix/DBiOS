@@ -26,15 +26,19 @@ final class TodoEntity {
     @Attribute(.spotlight)
     var date: Date?
 
+    @Attribute(.spotlight)
+    var priority: Int?
+
     @Transient
     var count: Int = 0
 
-    init(id: UUID? = nil, name: String, comments: String? = nil, date: Date = Date(), count: Int = 0) {
+    init(id: UUID? = nil, name: String, comments: String? = nil, date: Date = Date(), priority: Int? = nil, count: Int = 0) {
         self.id = id
         self.name = name
         self.comments = comments
         self.count = count
         self.date = date
+        self.priority = priority
     }
 
     var dao: Todo {

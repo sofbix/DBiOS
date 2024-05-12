@@ -55,6 +55,7 @@ class DatabaseManager: DatabaseProtocol {
         migrations.add(CreateTodoNameIndex())
         migrations.add(CreateTodoDateIndex())
         migrations.add(CreateTodoGroupIndex())
+        migrations.add(PriorityTodoEntity())
 
         do {
             try await autoMigrate()
