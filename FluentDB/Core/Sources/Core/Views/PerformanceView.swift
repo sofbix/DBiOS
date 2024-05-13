@@ -322,7 +322,7 @@ extension PerformanceView {
             var date = Date()
             let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
             date.addTimeInterval(aditionHours * 60.0)
-            let priority = Int.random(in: 0..<1000)
+            let priority = Int.random(in: 0..<1000000)
             try await container.dbQuery.addNewTodo(name: "Todo \(index)", comments: "Empty", date: date, priority: priority, selectedGroup: Group(name: ""))
         }
     }
@@ -338,14 +338,14 @@ extension PerformanceView {
             var date = Date()
             let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
             date.addTimeInterval(aditionHours * 60.0)
-            try await container.dbQuery.getTasks(startDate: date.addingTimeInterval(-600), stopDate: date.addingTimeInterval(600))
+            try await container.dbQuery.getTasks(startDate: date.addingTimeInterval(-60), stopDate: date.addingTimeInterval(60))
         }
     }
 
     func readTodosWithPriority(_ repeatIndex: Int) async throws {
         try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Priority", group: .readTodoWithPriority) { index in
-            let priority = Int.random(in: 0..<1000)
-            try await container.dbQuery.getTasks(startPriority: priority, stopPriority: priority + 1)
+            let priority = Int.random(in: 0..<1000000)
+            try await container.dbQuery.getTasks(startPriority: priority, stopPriority: priority + 10)
         }
     }
 }
