@@ -12,14 +12,14 @@ struct Comment: Identifiable {
     let group: Group
     let comments: String
     let totalCount: Int
-    let frequency: Int
+    let value: String
 
-    init(group: Group, comments: String, totalCount: Int, frequency: Int) {
+    init(group: Group, comments: String, totalCount: Int, value: String) {
         self.group = group
         self.id = UUID()
         self.comments = comments
         self.totalCount = totalCount
-        self.frequency = frequency
+        self.value = value
     }
 
     enum Group: String {
@@ -68,6 +68,8 @@ public struct PerformanceView: View {
     private var repeatCount: Int = 1
     @State
     private var isCalculateAsync: Bool = false
+    @State
+    private var isCalculateFrequency: Bool = false
 
     @State
     private var isCalculateAddingGroups: Bool = true
@@ -100,22 +102,23 @@ public struct PerformanceView: View {
                             Text("Iteration Count")
                             TextField("number", value: $iterationCount, format: .number)
                                 .textFieldStyle(.roundedBorder)
-                                .padding()
+                                .padding(0)
                         }
                         Toggle("Async (parallel queries)", isOn: $isCalculateAsync)
+                        Toggle("Result in Frequency (queries per second)", isOn: $isCalculateFrequency)
                         HStack {
                             Text("Wait pause (in sec.)")
                             TextField("number", value: $waitSeconds, format: .number)
                                 .textFieldStyle(.roundedBorder)
-                                .padding()
+                                .padding(0)
                         }
                         HStack {
                             Text("Repeat Count")
                             TextField("number", value: $repeatCount, format: .number)
                                 .textFieldStyle(.roundedBorder)
-                                .padding()
+                                .padding(0)
                         }
-                    }
+                    }.disabled(isCalculation)
                     Section(header: Text("Calculation options:")) {
                         Toggle("Adding Groups", isOn: $isCalculateAddingGroups)
                         Toggle("Reading Groups", isOn: $isCalculateReadingGroups)
@@ -123,7 +126,7 @@ public struct PerformanceView: View {
                         Toggle("Reading Todos with Name", isOn: $isCalculateReadingTodosWithName)
                         Toggle("Reading Todos with Date", isOn: $isCalculateReadingTodosWithDate)
                         Toggle("Reading Todos with Priority", isOn: $isCalculateReadingTodosWithPriority)
-                    }
+                    }.disabled(isCalculation)
                     Section(header: Text("Results of performance:")) {
                         ForEach(comments) { item in
                             Text(item.comments)
@@ -246,9 +249,11 @@ extension PerformanceView {
         var iterationCount: Int = 0
         var isCalculateAsync: Bool = false
         var isStopping: Bool = false
+        var isCalculateFrequency = false
         await MainActor.run {
             iterationCount = self.iterationCount
             isCalculateAsync = self.isCalculateAsync
+            isCalculateFrequency = self.isCalculateFrequency
             isStopping = self.isStopping
             self.title = title
         }
@@ -276,8 +281,8 @@ extension PerformanceView {
         try await calculateCounts()
 
         await MainActor.run {
-            let frequency = Int(trunc(Double(iterationCount) / sec))
-            let threads = isCalculateAsync ? "async (parallel queries)" : "sync (wait previous query)"
+            let frequency = Double(iterationCount) / sec
+            let threads = isCalculateAsync ? "Async (parallel queries)" : "Sync (wait previous query)"
 
             var totalCount: Int = 0
 
@@ -292,7 +297,11 @@ extension PerformanceView {
                 totalCount = self.todosCount
             }
 
-            let comment = Comment(group: group, comments: "\(title)\n\(threads)\nfrequency (count per sec.): \(frequency)\ntotal: \(totalCount) items", totalCount: totalCount, frequency: frequency)
+            let resultValue = isCalculateFrequency ? "\(Int(trunc(frequency)))" : String(format: "%5.2f", 1000.0 / frequency)
+
+            let result = isCalculateFrequency ? "Frequency (count per sec.): \(resultValue)" : "One query call: \(resultValue) msec."
+
+            let comment = Comment(group: group, comments: "\(title)\n\(threads)\n\(result)\ntotal: \(totalCount) items", totalCount: totalCount, value: resultValue)
             comments.append(comment)
         }
 
@@ -366,7 +375,7 @@ extension PerformanceView {
         for header in headers {
             result += header.rawValue + ";"
             result += "totalCount;"
-            result += "frequency;"
+            result += isCalculateFrequency ? "frequency;" : "msec.;"
         }
 
         result += "\n"
@@ -376,9 +385,9 @@ extension PerformanceView {
                 let number = index / headers.count + 1
                 result += "\(number);"
             }
-            result += comment.comments.replacingOccurrences(of: "\n", with: "") + ";"
+            result += comment.comments.replacingOccurrences(of: "\n", with: ". ") + ";"
             result += "\(comment.totalCount)" + ";"
-            result += "\(comment.frequency)" + ";"
+            result += "\(comment.value)" + ";"
             if index % headers.count == headers.count - 1 {
                 result += "\n"
             }
