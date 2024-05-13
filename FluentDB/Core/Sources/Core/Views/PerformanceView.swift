@@ -36,7 +36,15 @@ extension Task where Success == Never, Failure == Never {
 
 public struct PerformanceView: View {
 
-    static let weekMinutes: Int = 7*24*60
+    let name: String
+    private let sharedPath: URL
+    private static let weekMinutes: Int = 7*24*60
+
+    init(name: String = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "App") {
+        self.name = name
+        sharedPath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("\(name).csv")
+        title = "Performance \(name)"
+    }
 
     @EnvironmentObject
     private var container: Container
@@ -48,7 +56,7 @@ public struct PerformanceView: View {
     private var comments: [Comment] = []
 
     @State
-    private var title: String = "Performance preparing"
+    private var title: String
 
     @State
     private var isCalculation: Bool = false
@@ -83,10 +91,6 @@ public struct PerformanceView: View {
     private var isCalculateReadingTodosWithDate: Bool = true
     @State
     private var isCalculateReadingTodosWithPriority: Bool = true
-
-    private static let sharedName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "shared"
-
-    private let sharedPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("\(sharedName).csv")!
 
     public var body: some View {
         NavigationStack{
@@ -222,14 +226,14 @@ public struct PerformanceView: View {
     private func stopping() {
         Task {@MainActor in
             isStopping = true
-            title = "Stopping calculation..."
+            title = "Stopping \(name)..."
         }
     }
 
     private func stop() {
         Task {@MainActor in
             isCalculation = false
-            title = "Calculation Finished"
+            title = "\(name) calculation finished"
         }
     }
 
@@ -307,7 +311,7 @@ extension PerformanceView {
 
         if waitSeconds > 0, self.isStopping == false {
             await MainActor.run {
-                self.title = "Waiting \(waitSeconds) sec."
+                self.title = "Waiting \(waitSeconds) sec. for \(name)"
             }
             try await Task.sleep(seconds: Double(waitSeconds))
         }

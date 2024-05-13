@@ -666,7 +666,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C387230B2B75488200B66242 /* Build configuration list for PBXProject "FluentDB" */;
+			buildConfigurationList = C387230B2B75488200B66242 /* Build configuration list for PBXProject "DBiOS" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1407,7 +1407,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C387230B2B75488200B66242 /* Build configuration list for PBXProject "FluentDB" */ = {
+		C387230B2B75488200B66242 /* Build configuration list for PBXProject "DBiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C38723322B75488500B66242 /* Debug */,
