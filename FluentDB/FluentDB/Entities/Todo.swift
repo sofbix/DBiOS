@@ -123,24 +123,6 @@ struct CreateTodoNameIndex: AsyncMigration {
 
 }
 
-struct CreateTodoDateIndex: AsyncMigration {
-
-    func prepare(on database: Database) async throws {
-        try await (database as! SQLDatabase)
-            .create(index: "todo_date_index")
-            .on(TodoEntity.schema)
-            .column("date")
-            .run()
-    }
-
-    func revert(on database: Database) async throws {
-        try await (database as! SQLDatabase)
-            .drop(index: "todo_date_index")
-            .run()
-    }
-
-}
-
 struct CreateTodoGroupIndex: AsyncMigration {
 
     func prepare(on database: Database) async throws {

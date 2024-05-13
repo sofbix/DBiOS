@@ -53,7 +53,6 @@ class DatabaseManager: DatabaseProtocol {
         migrations.add(CreateTodoGroupEntity())
         migrations.add(GroupTodoEntity())
         migrations.add(CreateTodoNameIndex())
-        migrations.add(CreateTodoDateIndex())
         migrations.add(CreateTodoGroupIndex())
         migrations.add(PriorityTodoEntity())
 

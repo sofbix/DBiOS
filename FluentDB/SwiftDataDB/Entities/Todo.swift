@@ -23,7 +23,6 @@ final class TodoEntity {
     @Attribute(.spotlight)
     var group: TodoGroupEntity?
 
-    @Attribute(.spotlight)
     var date: Date?
 
     @Attribute(.spotlight)
