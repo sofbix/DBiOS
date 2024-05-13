@@ -67,7 +67,7 @@ public struct PerformanceView: View {
     @State
     private var repeatCount: Int = 1
     @State
-    private var isCalculateOnManyThreads: Bool = false
+    private var isCalculateAsync: Bool = false
 
     @State
     private var isCalculateAddingGroups: Bool = true
@@ -102,7 +102,7 @@ public struct PerformanceView: View {
                                 .textFieldStyle(.roundedBorder)
                                 .padding()
                         }
-                        Toggle("On Many Threads", isOn: $isCalculateOnManyThreads)
+                        Toggle("Async (parallel queries)", isOn: $isCalculateAsync)
                         HStack {
                             Text("Wait pause (in sec.)")
                             TextField("number", value: $waitSeconds, format: .number)
@@ -242,13 +242,13 @@ public struct PerformanceView: View {
 
 extension PerformanceView {
 
-    func calculateFrequency(title: String, group: Comment.Group, handle: (_ index: Int) async throws -> Void) async throws {
+    func calculateFrequency(title: String, group: Comment.Group, handle: @escaping  (_ index: Int) async throws -> Void) async throws {
         var iterationCount: Int = 0
-        var isCalculateOnManyThreads: Bool = false
+        var isCalculateAsync: Bool = false
         var isStopping: Bool = false
         await MainActor.run {
             iterationCount = self.iterationCount
-            isCalculateOnManyThreads = self.isCalculateOnManyThreads
+            isCalculateAsync = self.isCalculateAsync
             isStopping = self.isStopping
             self.title = title
         }
@@ -257,14 +257,13 @@ extension PerformanceView {
         }
         var startDate = Date()
 
-        if isCalculateOnManyThreads {
+        if isCalculateAsync {
             try await withThrowingTaskGroup(of: Void.self) { group in
                 for i in 1...iterationCount{
                     group.addTask {
-                        await try container.dbQuery.addNewGroup(name: "Group \(i)")
+                        await try handle(i)
                     }
                 }
-
                 try await group.waitForAll()
             }
         } else {
@@ -278,7 +277,7 @@ extension PerformanceView {
 
         await MainActor.run {
             let frequency = Int(trunc(Double(iterationCount) / sec))
-            let threads = isCalculateOnManyThreads ? "on Many Threads" : "on One Thread"
+            let threads = isCalculateAsync ? "async (parallel queries)" : "sync (wait previous query)"
 
             var totalCount: Int = 0
 
