@@ -20,6 +20,7 @@ final class TodoEntity : Object {
     @Persisted 
     var comments: String?
 
+    @Persisted
     var date: Date?
 
     @Persisted(indexed: true)
