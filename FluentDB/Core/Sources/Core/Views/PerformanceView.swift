@@ -297,7 +297,7 @@ extension PerformanceView {
             comments.append(comment)
         }
 
-        if waitSeconds > 0 {
+        if waitSeconds > 0, self.isStopping == false {
             await MainActor.run {
                 self.title = "Waiting \(waitSeconds) sec."
             }
