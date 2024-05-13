@@ -52,6 +52,8 @@ public struct PerformanceView: View {
 
     @State
     private var isCalculation: Bool = false
+    @State
+    private var isStopping: Bool = false
 
     @State
     private var groupsCount: Int = 0
@@ -145,26 +147,33 @@ public struct PerformanceView: View {
 
     @ViewBuilder
     var buttonPanel: some View {
-        HStack{
-            Spacer()
-            Button("Clean"){
-                clean()
-                comments = []
+        if isCalculation {
+            Button("Stop"){
+                stopping()
+            }.disabled(isStopping)
+        } else {
+            HStack{
+                Spacer()
+                Button("Clean"){
+                    clean()
+                    comments = []
+                }
+                Spacer()
+                Button("Start"){
+                    start()
+                }
+                Spacer()
+                Button("Share"){
+                    share()
+                }
+                Spacer()
             }
-            Spacer()
-            Button("Start"){
-                start()
-            }
-            Spacer()
-            Button("Share"){
-                share()
-            }
-            Spacer()
-        }.disabled(isCalculation)
+        }
     }
 
     private func clean() {
         Task { @MainActor in
+            isStopping = false
             isCalculation = true
             try await container.dbQuery.removeAllGroups()
             try await container.dbQuery.removeAllTodos()
@@ -174,31 +183,43 @@ public struct PerformanceView: View {
     }
 
     private func start() {
-        Task {@MainActor in
-            isCalculation = true
-            Task {
-                for repeatIndex in 1...repeatCount {
-                    if isCalculateAddingGroups {
-                        try await addGroups(repeatIndex)
-                    }
-                    if isCalculateReadingGroups {
-                        try await readGroups(repeatIndex)
-                    }
-                    if isCalculateAddingTodos {
-                        try await addTodos(repeatIndex)
-                    }
-                    if isCalculateReadingTodosWithName {
-                        try await readTodosWithName(repeatIndex)
-                    }
-                    if isCalculateReadingTodosWithDate {
-                        try await readTodosWithDate(repeatIndex)
-                    }
-                    if isCalculateReadingTodosWithPriority {
-                        try await readTodosWithPriority(repeatIndex)
-                    }
-                }
-                stop()
+        Task {
+            await MainActor.run {
+                isStopping = false
+                isCalculation = true
             }
+            for repeatIndex in 1...repeatCount {
+                if isCalculateAddingGroups {
+                    try await addGroups(repeatIndex)
+                }
+                if isCalculateReadingGroups {
+                    try await readGroups(repeatIndex)
+                }
+                if isCalculateAddingTodos {
+                    try await addTodos(repeatIndex)
+                }
+                if isCalculateReadingTodosWithName {
+                    try await readTodosWithName(repeatIndex)
+                }
+                if isCalculateReadingTodosWithDate {
+                    try await readTodosWithDate(repeatIndex)
+                }
+                if isCalculateReadingTodosWithPriority {
+                    try await readTodosWithPriority(repeatIndex)
+                }
+                if isStopping {
+                    break
+                }
+            }
+
+            stop()
+        }
+    }
+
+    private func stopping() {
+        Task {@MainActor in
+            isStopping = true
+            title = "Stopping calculation..."
         }
     }
 
@@ -224,10 +245,15 @@ extension PerformanceView {
     func calculateFrequency(title: String, group: Comment.Group, handle: (_ index: Int) async throws -> Void) async throws {
         var iterationCount: Int = 0
         var isCalculateOnManyThreads: Bool = false
+        var isStopping: Bool = false
         await MainActor.run {
             iterationCount = self.iterationCount
             isCalculateOnManyThreads = self.isCalculateOnManyThreads
+            isStopping = self.isStopping
             self.title = title
+        }
+        guard isStopping == false else {
+            return
         }
         var startDate = Date()
 
