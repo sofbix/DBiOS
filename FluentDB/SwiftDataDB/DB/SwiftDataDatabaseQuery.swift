@@ -124,15 +124,12 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
 
     func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Core.Todo] {
         let newContext = ModelContext(DatabaseManager.shared.container)
-//        let todosPredicate = #Predicate<TodoEntity>{ entity in
-//            if let priority = entity.priority {
-//                return priority >= startPriority && priority <= stopPriority
-//            } else {
-//                return false
-//            }
-//        }
         let todosPredicate = #Predicate<TodoEntity>{ entity in
-            entity.priority == startPriority
+            if let priority = entity.priority {
+                return priority >= startPriority && priority <= stopPriority
+            } else {
+                return false
+            }
         }
         let todosDescriptor = FetchDescriptor<TodoEntity>(
             predicate: todosPredicate,
