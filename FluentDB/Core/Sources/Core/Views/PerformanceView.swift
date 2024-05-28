@@ -22,8 +22,8 @@ struct Comment: Identifiable {
         self.value = value
     }
 
-    enum Group: String {
-        case addGroup, readGroup, addTodo, readTodoWithName, readTodoWithDate, readTodoWithPriority
+    enum Group: String, CaseIterable {
+        case addGroup, readGroup, addTodo, readTodoWithName, readTodoWithDate, readTodoWithPriority, random
     }
 }
 
@@ -91,6 +91,8 @@ public struct PerformanceView: View {
     private var isCalculateReadingTodosWithDate: Bool = true
     @State
     private var isCalculateReadingTodosWithPriority: Bool = true
+    @State
+    private var isCalculateRandom: Bool = false
 
     public var body: some View {
         NavigationStack{
@@ -130,6 +132,7 @@ public struct PerformanceView: View {
                         Toggle("Reading Todos with Name", isOn: $isCalculateReadingTodosWithName)
                         Toggle("Reading Todos with Date", isOn: $isCalculateReadingTodosWithDate)
                         Toggle("Reading Todos with Priority", isOn: $isCalculateReadingTodosWithPriority)
+                        Toggle("Random", isOn: $isCalculateRandom)
                     }.disabled(isCalculation)
                     Section(header: Text("Results of performance:")) {
                         ForEach(comments) { item in
@@ -214,6 +217,9 @@ public struct PerformanceView: View {
                 if isCalculateReadingTodosWithPriority {
                     try await readTodosWithPriority(repeatIndex)
                 }
+                if isCalculateRandom {
+                    try await random(repeatIndex)
+                }
                 if isStopping {
                     break
                 }
@@ -291,14 +297,12 @@ extension PerformanceView {
             var totalCount: Int = 0
 
             switch group {
-            case .addGroup:
+            case .addGroup, .readGroup:
                 totalCount = self.groupsCount
-            case .readGroup:
-                totalCount = self.groupsCount
-            case .addTodo:
+            case .addTodo, .readTodoWithName, .readTodoWithDate, .readTodoWithPriority:
                 totalCount = self.todosCount
-            case .readTodoWithName, .readTodoWithDate, .readTodoWithPriority:
-                totalCount = self.todosCount
+            case .random:
+                totalCount = self.groupsCount + self.todosCount
             }
 
             let resultValue = isCalculateFrequency ? "\(Int(trunc(frequency)))" : String(format: "%5.2f", 1000.0 / frequency)
@@ -317,47 +321,100 @@ extension PerformanceView {
         }
     }
 
+    fileprivate func addGroupsOperation(_ index: Int) async throws {
+        try await container.dbQuery.addNewGroup(name: "Group \(index)")
+    }
+    
     func addGroups(_ repeatIndex: Int) async throws {
-        try await calculateFrequency(title: "\(repeatIndex). Adding \(iterationCount) Groups", group: .addGroup) { index in
-            try await container.dbQuery.addNewGroup(name: "Group \(index)")
+        try await calculateFrequency(title: "\(repeatIndex). Adding \(iterationCount) Groups", group: .addGroup) 
+        { index in
+            try await addGroupsOperation(index)
         }
     }
 
+    fileprivate func readGroupsOperation() async throws -> [TodoGroup] {
+        return try await container.dbQuery.getGroups(with: UUID().uuidString)
+    }
+    
     func readGroups(_ repeatIndex: Int) async throws {
-        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Groups", group: .readGroup) { index in
-            try await container.dbQuery.getGroups(with: UUID().uuidString)
+        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Groups", group: .readGroup) 
+        { index in
+            try await readGroupsOperation()
         }
     }
 
+    fileprivate func addTodosOperation(_ index: Int) async throws {
+        var date = Date()
+        let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
+        date.addTimeInterval(aditionHours * 60.0)
+        let priority = Int.random(in: 0..<1000000)
+        try await container.dbQuery.addNewTodo(name: "Todo \(index)", comments: "Empty", date: date, priority: priority, selectedGroup: Group(name: ""))
+    }
+    
     func addTodos(_ repeatIndex: Int) async throws {
-        try await calculateFrequency(title: "\(repeatIndex). Adding \(iterationCount) Todos", group: .addTodo) { index in
-            var date = Date()
-            let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
-            date.addTimeInterval(aditionHours * 60.0)
-            let priority = Int.random(in: 0..<1000000)
-            try await container.dbQuery.addNewTodo(name: "Todo \(index)", comments: "Empty", date: date, priority: priority, selectedGroup: Group(name: ""))
+        try await calculateFrequency(title: "\(repeatIndex). Adding \(iterationCount) Todos", group: .addTodo) 
+        { index in
+            try await addTodosOperation(index)
         }
     }
 
+    fileprivate func readTodosWithNameOperation() async throws -> [Todo] {
+        return try await container.dbQuery.getTasks(with: UUID().uuidString)
+    }
+    
     func readTodosWithName(_ repeatIndex: Int) async throws {
-        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Name", group: .readTodoWithName) { index in
-            try await container.dbQuery.getTasks(with: UUID().uuidString)
+        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Name", group: .readTodoWithName) 
+        { index in
+            try await readTodosWithNameOperation()
         }
     }
 
+    fileprivate func readTodosWithDateOperation() async throws {
+        var date = Date()
+        let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
+        date.addTimeInterval(aditionHours * 60.0)
+        try await container.dbQuery.getTasks(startDate: date.addingTimeInterval(-60), stopDate: date.addingTimeInterval(60))
+    }
+    
     func readTodosWithDate(_ repeatIndex: Int) async throws {
-        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Date", group: .readTodoWithDate) { index in
-            var date = Date()
-            let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
-            date.addTimeInterval(aditionHours * 60.0)
-            try await container.dbQuery.getTasks(startDate: date.addingTimeInterval(-60), stopDate: date.addingTimeInterval(60))
+        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Date", group: .readTodoWithDate) 
+        { index in
+            try await readTodosWithDateOperation()
         }
     }
 
+    fileprivate func readTodosWithPriorityOperation() async throws {
+        let priority = Int.random(in: 0..<1000000)
+        try await container.dbQuery.getTasks(startPriority: priority, stopPriority: priority + 10)
+    }
+    
     func readTodosWithPriority(_ repeatIndex: Int) async throws {
-        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Priority", group: .readTodoWithPriority) { index in
-            let priority = Int.random(in: 0..<1000000)
-            try await container.dbQuery.getTasks(startPriority: priority, stopPriority: priority + 10)
+        try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Priority", group: .readTodoWithPriority) 
+        { index in
+            try await readTodosWithPriorityOperation()
+        }
+    }
+
+    func random(_ repeatIndex: Int) async throws {
+        try await calculateFrequency(title: "\(repeatIndex). Random query with \(iterationCount) count", group: .readTodoWithPriority)
+        { index in
+            let index = Int.random(in: 0..<Comment.Group.allCases.count - 2)
+            switch Comment.Group.allCases[index] {
+            case .addGroup:
+                try await addGroupsOperation(index)
+            case .readGroup:
+                try await readGroupsOperation()
+            case .addTodo:
+                try await addTodosOperation(index)
+            case .readTodoWithName:
+                try await readTodosWithNameOperation()
+            case .readTodoWithDate:
+                try await readTodosWithDateOperation()
+            case .readTodoWithPriority:
+                try await readTodosWithPriorityOperation()
+            case .random:
+                print("random")
+            }
         }
     }
 }
