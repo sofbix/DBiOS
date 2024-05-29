@@ -45,7 +45,12 @@ class DatabaseManager: DatabaseProtocol {
         pool.start()
 
         dbs = Databases(threadPool: pool, on: group)
-        dbs?.use(.sqlite(configuration), as: .sqlite)
+        let sqliteDBConfiguration = DatabaseConfigurationFactory.sqlite(
+            configuration,
+            maxConnectionsPerEventLoop: 1,
+            connectionPoolTimeout: .seconds(60)
+        )
+        dbs?.use(sqliteDBConfiguration, as: .sqlite)
 
         migrations.add(CreateTodoEntity())
         migrations.add(DateTodoEntity())
