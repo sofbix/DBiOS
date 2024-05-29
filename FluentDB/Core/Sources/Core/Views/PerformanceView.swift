@@ -68,30 +68,30 @@ public struct PerformanceView: View {
     @State
     private var todosCount: Int = 0
 
-    @State
+    @AppStorage("iterationCount")
     private var iterationCount: Int = 10_000
-    @State
+    @AppStorage("waitSeconds")
     private var waitSeconds: Int = 0
-    @State
+    @AppStorage("repeatCount")
     private var repeatCount: Int = 1
-    @State
+    @AppStorage("isCalculateAsync")
     private var isCalculateAsync: Bool = false
-    @State
+    @AppStorage("isCalculateFrequency")
     private var isCalculateFrequency: Bool = false
 
-    @State
+    @AppStorage("isCalculateAddingGroups")
     private var isCalculateAddingGroups: Bool = true
-    @State
+    @AppStorage("isCalculateReadingGroups")
     private var isCalculateReadingGroups: Bool = true
-    @State
+    @AppStorage("isCalculateAddingTodos")
     private var isCalculateAddingTodos: Bool = true
-    @State
+    @AppStorage("isCalculateReadingTodosWithName")
     private var isCalculateReadingTodosWithName: Bool = true
-    @State
+    @AppStorage("isCalculateReadingTodosWithDate")
     private var isCalculateReadingTodosWithDate: Bool = true
-    @State
+    @AppStorage("isCalculateReadingTodosWithPriority")
     private var isCalculateReadingTodosWithPriority: Bool = true
-    @State
+    @AppStorage("isCalculateRandom")
     private var isCalculateRandom: Bool = false
 
     public var body: some View {
