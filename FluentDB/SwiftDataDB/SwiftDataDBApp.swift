@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Core
+import SwiftDataModule
 
 @main
 struct SwiftDataDBApp: App {

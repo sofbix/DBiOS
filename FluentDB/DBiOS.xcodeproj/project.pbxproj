@@ -18,6 +18,7 @@
 		C3630D7C2C08703C0010EE86 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D7B2C08703C0010EE86 /* Core */; };
 		C3630D852C091B6E0010EE86 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D842C091B6E0010EE86 /* Fluent */; };
 		C3630D8B2C0920810010EE86 /* RealmDBModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D8A2C0920810010EE86 /* RealmDBModule */; };
+		C3630D8E2C0923F60010EE86 /* SwiftDataModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D8D2C0923F60010EE86 /* SwiftDataModule */; };
 		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
 		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
 		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
@@ -31,11 +32,7 @@
 		C3A4DA902BEAC2330010FD6D /* SwiftDataDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DA8F2BEAC2330010FD6D /* SwiftDataDBTests.swift */; };
 		C3A4DA9A2BEAC2330010FD6D /* SwiftDataDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DA992BEAC2330010FD6D /* SwiftDataDBUITests.swift */; };
 		C3A4DA9C2BEAC2330010FD6D /* SwiftDataDBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DA9B2BEAC2330010FD6D /* SwiftDataDBUITestsLaunchTests.swift */; };
-		C3A4DAAA2BEB75840010FD6D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAA92BEB75840010FD6D /* DatabaseManager.swift */; };
-		C3A4DAAC2BEB94820010FD6D /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAAB2BEB94820010FD6D /* Todo.swift */; };
-		C3A4DAAE2BEB94930010FD6D /* TodoGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAAD2BEB94930010FD6D /* TodoGroup.swift */; };
 		C3A4DABB2BEE0B6B0010FD6D /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3A4DABA2BEE0B6B0010FD6D /* Core */; };
-		C3A4DAC12BEE14A40010FD6D /* SwiftDataDatabaseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAC02BEE14A40010FD6D /* SwiftDataDatabaseQuery.swift */; };
 		C3A4DAC32BEE1B5E0010FD6D /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3A4DAC22BEE1B5E0010FD6D /* Core */; };
 		C3A4DACB2BEE77230010FD6D /* RealmDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DACA2BEE77230010FD6D /* RealmDBApp.swift */; };
 		C3A4DACF2BEE77250010FD6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A4DACE2BEE77250010FD6D /* Assets.xcassets */; };
@@ -134,10 +131,6 @@
 		C3A4DA952BEAC2330010FD6D /* SwiftDataDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDataDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A4DA992BEAC2330010FD6D /* SwiftDataDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataDBUITests.swift; sourceTree = "<group>"; };
 		C3A4DA9B2BEAC2330010FD6D /* SwiftDataDBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataDBUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C3A4DAA92BEB75840010FD6D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		C3A4DAAB2BEB94820010FD6D /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		C3A4DAAD2BEB94930010FD6D /* TodoGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroup.swift; sourceTree = "<group>"; };
-		C3A4DAC02BEE14A40010FD6D /* SwiftDataDatabaseQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataDatabaseQuery.swift; sourceTree = "<group>"; };
 		C3A4DAC82BEE77230010FD6D /* RealmDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A4DACA2BEE77230010FD6D /* RealmDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBApp.swift; sourceTree = "<group>"; };
 		C3A4DACE2BEE77250010FD6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -187,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3630D8E2C0923F60010EE86 /* SwiftDataModule in Frameworks */,
 				C3A4DAC32BEE1B5E0010FD6D /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,9 +345,7 @@
 		C3A4DA7D2BEAC2320010FD6D /* SwiftDataDB */ = {
 			isa = PBXGroup;
 			children = (
-				C3A4DAA62BEB75480010FD6D /* DB */,
-				C3A4DAA72BEB754E0010FD6D /* Entities */,
-				C3A4DAA82BEB75550010FD6D /* Views */,
+				C3A4DA7E2BEAC2320010FD6D /* SwiftDataDBApp.swift */,
 				C3A4DA822BEAC2330010FD6D /* Assets.xcassets */,
 				C3A4DA842BEAC2330010FD6D /* Preview Content */,
 			);
@@ -383,32 +375,6 @@
 				C3A4DA9B2BEAC2330010FD6D /* SwiftDataDBUITestsLaunchTests.swift */,
 			);
 			path = SwiftDataDBUITests;
-			sourceTree = "<group>";
-		};
-		C3A4DAA62BEB75480010FD6D /* DB */ = {
-			isa = PBXGroup;
-			children = (
-				C3A4DAA92BEB75840010FD6D /* DatabaseManager.swift */,
-				C3A4DAC02BEE14A40010FD6D /* SwiftDataDatabaseQuery.swift */,
-			);
-			path = DB;
-			sourceTree = "<group>";
-		};
-		C3A4DAA72BEB754E0010FD6D /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				C3A4DAAB2BEB94820010FD6D /* Todo.swift */,
-				C3A4DAAD2BEB94930010FD6D /* TodoGroup.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
-		C3A4DAA82BEB75550010FD6D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C3A4DA7E2BEAC2320010FD6D /* SwiftDataDBApp.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		C3A4DAB92BEE0B6B0010FD6D /* Frameworks */ = {
@@ -550,6 +516,7 @@
 			name = SwiftDataDB;
 			packageProductDependencies = (
 				C3A4DAC22BEE1B5E0010FD6D /* Core */,
+				C3630D8D2C0923F60010EE86 /* SwiftDataModule */,
 			);
 			productName = SwiftDataDB;
 			productReference = C3A4DA7C2BEAC2320010FD6D /* SwiftDataDB.app */;
@@ -714,6 +681,7 @@
 				C3630D782C07BAA70010EE86 /* XCRemoteSwiftPackageReference "CoreStore" */,
 				C3630D832C091B6E0010EE86 /* XCLocalSwiftPackageReference "Modules/Fluent" */,
 				C3630D892C0920810010EE86 /* XCLocalSwiftPackageReference "Modules/RealmDBModule" */,
+				C3630D8C2C0923F60010EE86 /* XCLocalSwiftPackageReference "Modules/SwiftDataModule" */,
 			);
 			productRefGroup = C38723112B75488300B66242 /* Products */;
 			projectDirPath = "";
@@ -856,11 +824,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3A4DAAE2BEB94930010FD6D /* TodoGroup.swift in Sources */,
-				C3A4DAC12BEE14A40010FD6D /* SwiftDataDatabaseQuery.swift in Sources */,
 				C3A4DA7F2BEAC2320010FD6D /* SwiftDataDBApp.swift in Sources */,
-				C3A4DAAA2BEB75840010FD6D /* DatabaseManager.swift in Sources */,
-				C3A4DAAC2BEB94820010FD6D /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1624,6 +1588,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/RealmDBModule;
 		};
+		C3630D8C2C0923F60010EE86 /* XCLocalSwiftPackageReference "Modules/SwiftDataModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/SwiftDataModule;
+		};
 		C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Core;
@@ -1675,6 +1643,10 @@
 		C3630D8A2C0920810010EE86 /* RealmDBModule */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealmDBModule;
+		};
+		C3630D8D2C0923F60010EE86 /* SwiftDataModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftDataModule;
 		};
 		C387233E2B75495E00B66242 /* FluentSQLiteDriver */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -9,16 +9,20 @@ import Foundation
 import SwiftData
 import Core
 
-struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
-    
+public struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
+
     let databaseManager: DatabaseManager
 
-    func getAllGroupsCount() async throws -> Int {
+    public init(databaseManager: DatabaseManager) {
+        self.databaseManager = databaseManager
+    }
+
+    public func getAllGroupsCount() async throws -> Int {
         let newContext = ModelContext(DatabaseManager.shared.container)
         return try newContext.fetchCount(FetchDescriptor<TodoGroupEntity>())
     }
 
-    func getAllGroups() async throws -> [Group] {
+    public func getAllGroups() async throws -> [Group] {
         let newContext = ModelContext(DatabaseManager.shared.container)
         let groupsPredicate = #Predicate<TodoGroupEntity>{ entity in
             true
@@ -36,7 +40,7 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return groups
     }
 
-    func getGroups(with searchText: String) async throws -> [TodoGroup] {
+    public func getGroups(with searchText: String) async throws -> [TodoGroup] {
         let newContext = ModelContext(DatabaseManager.shared.container)
         let groupsPredicate = #Predicate<TodoGroupEntity>{ entity in
             entity.name.contains(searchText) || searchText.isEmpty
@@ -53,24 +57,24 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return groups
     }
 
-    func addNewGroup(name: String) async throws {
+    public func addNewGroup(name: String) async throws {
         let modelContext = ModelContext(DatabaseManager.shared.container)
         let group = TodoGroupEntity(id: nil, name: name)
         modelContext.insert(group)
         try modelContext.save()
     }
 
-    func removeAllGroups() async throws {
+    public func removeAllGroups() async throws {
         let newContext = ModelContext(DatabaseManager.shared.container)
         try newContext.delete(model: TodoGroupEntity.self)
     }
 
-    func getAllTasksCount() async throws -> Int {
+    public func getAllTasksCount() async throws -> Int {
         let newContext = ModelContext(DatabaseManager.shared.container)
         return try newContext.fetchCount(FetchDescriptor<TodoEntity>())
     }
 
-    func getTasksWithoutGroup() async throws -> [Todo] {
+    public func getTasksWithoutGroup() async throws -> [Todo] {
         let newContext = ModelContext(DatabaseManager.shared.container)
         let todosPredicate = #Predicate<TodoEntity>{ entity in
             entity.group == nil
@@ -85,7 +89,7 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
-    func getTasks(with searchText: String) async throws -> [Todo] {
+    public func getTasks(with searchText: String) async throws -> [Todo] {
         let newContext = ModelContext(DatabaseManager.shared.container)
         let todosPredicate = searchText.isEmpty == false ?
         #Predicate<TodoEntity>{ entity in
@@ -103,7 +107,7 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
-    func getTasks(startDate: Date, stopDate: Date) async throws -> [Core.Todo] {
+    public func getTasks(startDate: Date, stopDate: Date) async throws -> [Core.Todo] {
         let newContext = ModelContext(DatabaseManager.shared.container)
         let todosPredicate = #Predicate<TodoEntity>{ entity in
             if let date = entity.date {
@@ -122,7 +126,7 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
-    func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Core.Todo] {
+    public func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Core.Todo] {
         let newContext = ModelContext(DatabaseManager.shared.container)
         let todosPredicate = #Predicate<TodoEntity>{ entity in
             if let priority = entity.priority {
@@ -141,7 +145,7 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
-    func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Core.Group) async throws {
+    public func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Core.Group) async throws {
         let modelContext = ModelContext(DatabaseManager.shared.container)
         let todo = TodoEntity(id: nil, name: name, date: date, priority: priority)
         todo.comments = comments
@@ -150,7 +154,7 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         try modelContext.save()
     }
 
-    func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws {
+    public func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws {
         let newContext = ModelContext(DatabaseManager.shared.container)
 
         guard 
@@ -175,7 +179,7 @@ struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return group
     }
 
-    func removeAllTodos() async throws {
+    public func removeAllTodos() async throws {
         let newContext = ModelContext(DatabaseManager.shared.container)
         try newContext.delete(model: TodoEntity.self)
     }

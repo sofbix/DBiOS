@@ -9,9 +9,9 @@ import Foundation
 import SwiftData
 import Core
 
-class DatabaseManager: DatabaseProtocol {
+public class DatabaseManager: DatabaseProtocol {
 
-    static let shared = DatabaseManager()
+    public static let shared = DatabaseManager()
 
     private let configuration : ModelConfiguration
 
@@ -23,7 +23,7 @@ class DatabaseManager: DatabaseProtocol {
         return documentsDirectory
     }
 
-    init() {
+    public init() {
         let path = Self.getDocumentsDirectory().appendingPathComponent("SwiftData.db")
         print(path.absoluteString)
         configuration = ModelConfiguration(
