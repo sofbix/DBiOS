@@ -9,9 +9,9 @@ import Foundation
 import RealmSwift
 import Core
 
-class DatabaseManager: DatabaseProtocol {
+public class DatabaseManager: DatabaseProtocol {
 
-    static let shared = DatabaseManager()
+    public static let shared = DatabaseManager()
 
     let realmURL: URL
     let configuration: Realm.Configuration
@@ -22,7 +22,7 @@ class DatabaseManager: DatabaseProtocol {
         return documentsDirectory
     }
 
-    init() {
+    public init() {
         realmURL = Self.getDocumentsDirectory().appendingPathComponent("realm.db", isDirectory: false)
         print(realmURL.absoluteString)
         configuration = Self.realmConfiguration(fileURL: realmURL)

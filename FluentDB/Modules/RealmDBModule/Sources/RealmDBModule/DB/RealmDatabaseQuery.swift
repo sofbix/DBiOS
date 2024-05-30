@@ -10,15 +10,19 @@ import RealmSwift
 import Core
 
 
-struct RealmDatabaseQuery : DatabaseQueryProtocol {
-    
+public struct RealmDatabaseQuery : DatabaseQueryProtocol {
+
     let databaseManager: DatabaseManager
 
-    func getAllGroupsCount() async throws -> Int {
+    public init(databaseManager: DatabaseManager) {
+        self.databaseManager = databaseManager
+    }
+
+    public func getAllGroupsCount() async throws -> Int {
         databaseManager.realm.objects(TodoGroupEntity.self).count
     }
 
-    func getAllGroups() async throws -> [Group] {
+    public func getAllGroups() async throws -> [Group] {
         return databaseManager.realm.objects(TodoGroupEntity.self)
             .sorted(by: \.name, ascending: true)
             .map { item in
@@ -26,7 +30,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             }
     }
 
-    func getGroups(with searchText: String) async throws -> [TodoGroup] {
+    public func getGroups(with searchText: String) async throws -> [TodoGroup] {
         var query = databaseManager.realm.objects(TodoGroupEntity.self)
 
         if !searchText.isEmpty {
@@ -43,14 +47,14 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             }
     }
 
-    func addNewGroup(name: String) async throws {
+    public func addNewGroup(name: String) async throws {
         let group = TodoGroupEntity(name: name)
         try databaseManager.realm.write{
             databaseManager.realm.add(group)
         }
     }
 
-    func removeAllGroups() async throws {
+    public func removeAllGroups() async throws {
         let realm = databaseManager.realm
         try realm.write{
             let objects = realm.objects(TodoGroupEntity.self)
@@ -58,11 +62,11 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
         }
     }
 
-    func getAllTasksCount() async throws -> Int {
+    public func getAllTasksCount() async throws -> Int {
         databaseManager.realm.objects(TodoEntity.self).count
     }
 
-    func getTasksWithoutGroup() async throws -> [Todo] {
+    public func getTasksWithoutGroup() async throws -> [Todo] {
         return databaseManager.realm.objects(TodoEntity.self)
             .where {
                 $0.group == nil
@@ -70,7 +74,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             .map { $0.dao }
     }
 
-    func getTasks(with searchText: String) async throws -> [Todo] {
+    public func getTasks(with searchText: String) async throws -> [Todo] {
         var query = databaseManager.realm.objects(TodoEntity.self)
 
         if !searchText.isEmpty {
@@ -85,7 +89,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             .map { $0.dao }
     }
 
-    func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo] {
+    public func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo] {
         let query = databaseManager.realm.objects(TodoEntity.self)
             .where {
                 $0.date > startDate && $0.date < stopDate
@@ -96,7 +100,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             .map { $0.dao }
     }
 
-    func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo] {
+    public func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo] {
         let query = databaseManager.realm.objects(TodoEntity.self)
             //.filter("priority >= %@ && priority <= %@", startPriority, stopPriority)
             .where {
@@ -108,7 +112,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
             .map { $0.dao }
     }
 
-    func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Group) async throws {
+    public func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Group) async throws {
         let todo = TodoEntity(name: name, date: date, priority: priority)
         todo.comments = comments
         todo.group = selectedGroupEntity(selectedGroup)
@@ -117,7 +121,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
         }
     }
 
-    func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws {
+    public func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws {
         guard let todo = databaseManager.realm.object(ofType: TodoEntity.self, forPrimaryKey: editedTodo.id)
         else {
             return
@@ -136,7 +140,7 @@ struct RealmDatabaseQuery : DatabaseQueryProtocol {
         return databaseManager.realm.object(ofType: TodoGroupEntity.self, forPrimaryKey: id)
     }
 
-    func removeAllTodos() async throws {
+    public func removeAllTodos() async throws {
         let realm = databaseManager.realm
         try realm.write{
             let objects = realm.objects(TodoEntity.self)

@@ -17,6 +17,7 @@
 		C3630D7A2C07BAA70010EE86 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D792C07BAA70010EE86 /* CoreStore */; };
 		C3630D7C2C08703C0010EE86 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D7B2C08703C0010EE86 /* Core */; };
 		C3630D852C091B6E0010EE86 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D842C091B6E0010EE86 /* Fluent */; };
+		C3630D8B2C0920810010EE86 /* RealmDBModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D8A2C0920810010EE86 /* RealmDBModule */; };
 		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
 		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
 		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
@@ -42,10 +43,6 @@
 		C3A4DADC2BEE77260010FD6D /* RealmDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DADB2BEE77260010FD6D /* RealmDBTests.swift */; };
 		C3A4DAE62BEE77260010FD6D /* RealmDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAE52BEE77260010FD6D /* RealmDBUITests.swift */; };
 		C3A4DAE82BEE77260010FD6D /* RealmDBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAE72BEE77260010FD6D /* RealmDBUITestsLaunchTests.swift */; };
-		C3A4DAF62BEE77840010FD6D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAF52BEE77840010FD6D /* DatabaseManager.swift */; };
-		C3A4DAF82BEE779B0010FD6D /* RealmDatabaseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAF72BEE779B0010FD6D /* RealmDatabaseQuery.swift */; };
-		C3A4DAFA2BEE77AF0010FD6D /* TodoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAF92BEE77AF0010FD6D /* TodoEntity.swift */; };
-		C3A4DAFC2BEE77E40010FD6D /* TodoGroupEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DAFB2BEE77E40010FD6D /* TodoGroupEntity.swift */; };
 		C3A4DB012BEE78840010FD6D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C3A4DB002BEE78840010FD6D /* RealmSwift */; };
 		C3A4DB032BEEA8ED0010FD6D /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3A4DB022BEEA8ED0010FD6D /* Core */; };
 		C3A4DB042BEEC0BB0010FD6D /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C3A4DB002BEE78840010FD6D /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -150,10 +147,6 @@
 		C3A4DAE12BEE77260010FD6D /* RealmDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RealmDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A4DAE52BEE77260010FD6D /* RealmDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBUITests.swift; sourceTree = "<group>"; };
 		C3A4DAE72BEE77260010FD6D /* RealmDBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C3A4DAF52BEE77840010FD6D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		C3A4DAF72BEE779B0010FD6D /* RealmDatabaseQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabaseQuery.swift; sourceTree = "<group>"; };
-		C3A4DAF92BEE77AF0010FD6D /* TodoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEntity.swift; sourceTree = "<group>"; };
-		C3A4DAFB2BEE77E40010FD6D /* TodoGroupEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroupEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3A4DB012BEE78840010FD6D /* RealmSwift in Frameworks */,
+				C3630D8B2C0920810010EE86 /* RealmDBModule in Frameworks */,
 				C3A4DB032BEEA8ED0010FD6D /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,9 +421,7 @@
 		C3A4DAC92BEE77230010FD6D /* RealmDB */ = {
 			isa = PBXGroup;
 			children = (
-				C3A4DAF22BEE77610010FD6D /* DB */,
-				C3A4DAF32BEE77610010FD6D /* Entities */,
-				C3A4DAF42BEE77610010FD6D /* Views */,
+				C3A4DACA2BEE77230010FD6D /* RealmDBApp.swift */,
 				C3A4DACE2BEE77250010FD6D /* Assets.xcassets */,
 				C3A4DAD02BEE77250010FD6D /* Preview Content */,
 			);
@@ -459,32 +451,6 @@
 				C3A4DAE72BEE77260010FD6D /* RealmDBUITestsLaunchTests.swift */,
 			);
 			path = RealmDBUITests;
-			sourceTree = "<group>";
-		};
-		C3A4DAF22BEE77610010FD6D /* DB */ = {
-			isa = PBXGroup;
-			children = (
-				C3A4DAF52BEE77840010FD6D /* DatabaseManager.swift */,
-				C3A4DAF72BEE779B0010FD6D /* RealmDatabaseQuery.swift */,
-			);
-			path = DB;
-			sourceTree = "<group>";
-		};
-		C3A4DAF32BEE77610010FD6D /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				C3A4DAF92BEE77AF0010FD6D /* TodoEntity.swift */,
-				C3A4DAFB2BEE77E40010FD6D /* TodoGroupEntity.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
-		C3A4DAF42BEE77610010FD6D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C3A4DACA2BEE77230010FD6D /* RealmDBApp.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,6 +608,7 @@
 			packageProductDependencies = (
 				C3A4DB002BEE78840010FD6D /* RealmSwift */,
 				C3A4DB022BEEA8ED0010FD6D /* Core */,
+				C3630D8A2C0920810010EE86 /* RealmDBModule */,
 			);
 			productName = RealmDB;
 			productReference = C3A4DAC82BEE77230010FD6D /* RealmDB.app */;
@@ -746,6 +713,7 @@
 				C3A4DAFD2BEE78840010FD6D /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C3630D782C07BAA70010EE86 /* XCRemoteSwiftPackageReference "CoreStore" */,
 				C3630D832C091B6E0010EE86 /* XCLocalSwiftPackageReference "Modules/Fluent" */,
+				C3630D892C0920810010EE86 /* XCLocalSwiftPackageReference "Modules/RealmDBModule" */,
 			);
 			productRefGroup = C38723112B75488300B66242 /* Products */;
 			projectDirPath = "";
@@ -917,10 +885,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3A4DAF82BEE779B0010FD6D /* RealmDatabaseQuery.swift in Sources */,
-				C3A4DAF62BEE77840010FD6D /* DatabaseManager.swift in Sources */,
-				C3A4DAFA2BEE77AF0010FD6D /* TodoEntity.swift in Sources */,
-				C3A4DAFC2BEE77E40010FD6D /* TodoGroupEntity.swift in Sources */,
 				C3A4DACB2BEE77230010FD6D /* RealmDBApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1656,6 +1620,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/Fluent;
 		};
+		C3630D892C0920810010EE86 /* XCLocalSwiftPackageReference "Modules/RealmDBModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/RealmDBModule;
+		};
 		C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Core;
@@ -1703,6 +1671,10 @@
 		C3630D842C091B6E0010EE86 /* Fluent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Fluent;
+		};
+		C3630D8A2C0920810010EE86 /* RealmDBModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealmDBModule;
 		};
 		C387233E2B75495E00B66242 /* FluentSQLiteDriver */ = {
 			isa = XCSwiftPackageProductDependency;
