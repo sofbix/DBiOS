@@ -32,8 +32,8 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
     func getAllGroups() async throws -> [Group] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
-                From<TodoGroupEntity>(),
-                OrderBy<TodoGroupEntity>(.ascending("name"))
+                From<TodoGroupEntity>()
+                    .orderBy(.ascending(\.$name))
             ).map { item in
                 Group(id: item.id, name: item.name)
             }
@@ -43,9 +43,18 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
     func getGroups(with searchText: String) async throws -> [TodoGroup] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
-                From<TodoGroupEntity>(),
-                //Where<TodoGroupEntity>("name LIKE '%\(searchText)%'"),
-                OrderBy<TodoGroupEntity>(.ascending("name"))
+                searchText.isEmpty == true
+                ?
+                    From<TodoGroupEntity>()
+                        .orderBy(.ascending(\.$name))
+                :
+                    From<TodoGroupEntity>()
+                        .where(
+                            format: "%K CONTAINS[cd] %@",
+                            String(keyPath: \TodoGroupEntity.$name),
+                            searchText
+                        )
+                        .orderBy(.ascending(\.$name))
             ).map { item in
                 TodoGroup(id: item.id, name: item.name, todos: item.todos.map{$0.dao})
             }
@@ -74,19 +83,28 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
     func getTasksWithoutGroup() async throws -> [Todo] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
-                    From<TodoEntity>(),
-                    Where<TodoEntity>("group == NULL")
-                )
-                .map { $0.dao }
+                From<TodoEntity>()
+                    .where(\.$group == nil)
+            )
+            .map { $0.dao }
         }
     }
 
     func getTasks(with searchText: String) async throws -> [Todo] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
-                From<TodoEntity>(),
-                Where<TodoEntity>("name LIKE %\(searchText)%"),
-                OrderBy<TodoEntity>(.ascending("name"))
+                searchText.isEmpty == true
+                ?
+                    From<TodoEntity>()
+                        .orderBy(.ascending(\.$name))
+                :
+                    From<TodoEntity>()
+                        .where(
+                            format: "%K CONTAINS[cd] %@",
+                            String(keyPath: \TodoEntity.$name),
+                            searchText
+                        )
+                        .orderBy(.ascending(\.$name))
             ).map { $0.dao }
         }
     }
@@ -94,9 +112,9 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
     func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
-                From<TodoEntity>(),
-                Where<TodoEntity>("date > \(startDate) AND date < \(stopDate)"),
-                OrderBy<TodoEntity>(.ascending("date"))
+                From<TodoEntity>()
+                    .where(\.$date >= startDate && \.$date <= stopDate)
+                    .orderBy(.ascending(\.$date))
             ).map { $0.dao }
         }
     }
@@ -104,9 +122,9 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
     func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
-                From<TodoEntity>(),
-                Where<TodoEntity>("priority > \(startPriority) AND priority < \(stopPriority)"),
-                OrderBy<TodoEntity>(.ascending("priority"))
+                From<TodoEntity>()
+                .where(\.$priority >= startPriority && \.$priority <= stopPriority)
+                .orderBy(.ascending(\.$priority))
             ).map { $0.dao }
         }
     }
@@ -125,8 +143,8 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
     func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws {
         try synchronous { dataStack in
             guard let todo = try dataStack.fetchOne(
-                From<TodoEntity>(),
-                Where<TodoEntity>("id == '\(editedTodo.id)'")
+                From<TodoEntity>()
+                    .where(\.$id == editedTodo.id)
             ) else {
                 return
             }
@@ -141,8 +159,8 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
             return nil
         }
         return try? transaction.fetchOne(
-            From<TodoGroupEntity>(),
-            Where<TodoGroupEntity>("id == '\(id)'")
+            From<TodoGroupEntity>()
+                .where(\.$id == id)
         )
     }
 
