@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		C32BA0802B95079700F33D8F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BA07F2B95079700F33D8F /* DatabaseManager.swift */; };
 		C32BA0852B95154500F33D8F /* TodoGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BA0842B95154500F33D8F /* TodoGroup.swift */; };
+		C3630D552C076A4C0010EE86 /* CoreStoreDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D542C076A4C0010EE86 /* CoreStoreDBApp.swift */; };
+		C3630D592C076A4E0010EE86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3630D582C076A4E0010EE86 /* Assets.xcassets */; };
+		C3630D5C2C076A4E0010EE86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3630D5B2C076A4E0010EE86 /* Preview Assets.xcassets */; };
+		C3630D702C076B460010EE86 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D6F2C076B460010EE86 /* DatabaseManager.swift */; };
+		C3630D722C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D712C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift */; };
+		C3630D742C076B810010EE86 /* TodoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D732C076B810010EE86 /* TodoEntity.swift */; };
+		C3630D762C076B910010EE86 /* TodoGroupEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D752C076B910010EE86 /* TodoGroupEntity.swift */; };
+		C3630D7A2C07BAA70010EE86 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D792C07BAA70010EE86 /* CoreStore */; };
+		C3630D7C2C08703C0010EE86 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D7B2C08703C0010EE86 /* Core */; };
 		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
 		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
 		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
@@ -107,6 +116,14 @@
 /* Begin PBXFileReference section */
 		C32BA07F2B95079700F33D8F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C32BA0842B95154500F33D8F /* TodoGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroup.swift; sourceTree = "<group>"; };
+		C3630D522C076A4C0010EE86 /* CoreStoreDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreStoreDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3630D542C076A4C0010EE86 /* CoreStoreDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStoreDBApp.swift; sourceTree = "<group>"; };
+		C3630D582C076A4E0010EE86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3630D5B2C076A4E0010EE86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C3630D6F2C076B460010EE86 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		C3630D712C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStoreDatabaseQuery.swift; sourceTree = "<group>"; };
+		C3630D732C076B810010EE86 /* TodoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEntity.swift; sourceTree = "<group>"; };
+		C3630D752C076B910010EE86 /* TodoGroupEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroupEntity.swift; sourceTree = "<group>"; };
 		C38723102B75488300B66242 /* FluentDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluentDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38723132B75488300B66242 /* FluentDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBApp.swift; sourceTree = "<group>"; };
 		C38723172B75488500B66242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +164,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C3630D4F2C076A4C0010EE86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3630D7A2C07BAA70010EE86 /* CoreStore in Frameworks */,
+				C3630D7C2C08703C0010EE86 /* Core in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C387230D2B75488200B66242 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,6 +270,52 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		C3630D532C076A4C0010EE86 /* CoreStoreDB */ = {
+			isa = PBXGroup;
+			children = (
+				C3630D6D2C076B0C0010EE86 /* DB */,
+				C3630D6C2C076B0C0010EE86 /* Entities */,
+				C3630D6E2C076B0C0010EE86 /* View */,
+				C3630D582C076A4E0010EE86 /* Assets.xcassets */,
+				C3630D5A2C076A4E0010EE86 /* Preview Content */,
+			);
+			path = CoreStoreDB;
+			sourceTree = "<group>";
+		};
+		C3630D5A2C076A4E0010EE86 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C3630D5B2C076A4E0010EE86 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C3630D6C2C076B0C0010EE86 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C3630D732C076B810010EE86 /* TodoEntity.swift */,
+				C3630D752C076B910010EE86 /* TodoGroupEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C3630D6D2C076B0C0010EE86 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				C3630D6F2C076B460010EE86 /* DatabaseManager.swift */,
+				C3630D712C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		C3630D6E2C076B0C0010EE86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3630D542C076A4C0010EE86 /* CoreStoreDBApp.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C38723072B75488200B66242 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +328,7 @@
 				C3A4DAC92BEE77230010FD6D /* RealmDB */,
 				C3A4DADA2BEE77260010FD6D /* RealmDBTests */,
 				C3A4DAE42BEE77260010FD6D /* RealmDBUITests */,
+				C3630D532C076A4C0010EE86 /* CoreStoreDB */,
 				C38723112B75488300B66242 /* Products */,
 				C3A4DAB92BEE0B6B0010FD6D /* Frameworks */,
 			);
@@ -273,6 +346,7 @@
 				C3A4DAC82BEE77230010FD6D /* RealmDB.app */,
 				C3A4DAD72BEE77260010FD6D /* RealmDBTests.xctest */,
 				C3A4DAE12BEE77260010FD6D /* RealmDBUITests.xctest */,
+				C3630D522C076A4C0010EE86 /* CoreStoreDB.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -388,7 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				C3A4DAF22BEE77610010FD6D /* DB */,
-				C3A4DAF32BEE77610010FD6D /* Entites */,
+				C3A4DAF32BEE77610010FD6D /* Entities */,
 				C3A4DAF42BEE77610010FD6D /* Views */,
 				C3A4DACE2BEE77250010FD6D /* Assets.xcassets */,
 				C3A4DAD02BEE77250010FD6D /* Preview Content */,
@@ -430,13 +504,13 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
-		C3A4DAF32BEE77610010FD6D /* Entites */ = {
+		C3A4DAF32BEE77610010FD6D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				C3A4DAF92BEE77AF0010FD6D /* TodoEntity.swift */,
 				C3A4DAFB2BEE77E40010FD6D /* TodoGroupEntity.swift */,
 			);
-			path = Entites;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		C3A4DAF42BEE77610010FD6D /* Views */ = {
@@ -450,6 +524,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C3630D512C076A4C0010EE86 /* CoreStoreDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3630D5F2C076A4E0010EE86 /* Build configuration list for PBXNativeTarget "CoreStoreDB" */;
+			buildPhases = (
+				C3630D4E2C076A4C0010EE86 /* Sources */,
+				C3630D4F2C076A4C0010EE86 /* Frameworks */,
+				C3630D502C076A4C0010EE86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoreStoreDB;
+			packageProductDependencies = (
+				C3630D792C07BAA70010EE86 /* CoreStore */,
+				C3630D7B2C08703C0010EE86 /* Core */,
+			);
+			productName = CoreStore;
+			productReference = C3630D522C076A4C0010EE86 /* CoreStoreDB.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C387230F2B75488200B66242 /* FluentDB */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C38723342B75488500B66242 /* Build configuration list for PBXNativeTarget "FluentDB" */;
@@ -628,9 +723,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					C3630D512C076A4C0010EE86 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					C387230F2B75488200B66242 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -679,6 +777,7 @@
 				C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */,
 				C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */,
 				C3A4DAFD2BEE78840010FD6D /* XCRemoteSwiftPackageReference "realm-swift" */,
+				C3630D782C07BAA70010EE86 /* XCRemoteSwiftPackageReference "CoreStore" */,
 			);
 			productRefGroup = C38723112B75488300B66242 /* Products */;
 			projectDirPath = "";
@@ -693,11 +792,21 @@
 				C3A4DAC72BEE77230010FD6D /* RealmDB */,
 				C3A4DAD62BEE77260010FD6D /* RealmDBTests */,
 				C3A4DAE02BEE77260010FD6D /* RealmDBUITests */,
+				C3630D512C076A4C0010EE86 /* CoreStoreDB */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C3630D502C076A4C0010EE86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3630D5C2C076A4E0010EE86 /* Preview Assets.xcassets in Resources */,
+				C3630D592C076A4E0010EE86 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C387230E2B75488200B66242 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -770,6 +879,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C3630D4E2C076A4C0010EE86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3630D722C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift in Sources */,
+				C3630D702C076B460010EE86 /* DatabaseManager.swift in Sources */,
+				C3630D742C076B810010EE86 /* TodoEntity.swift in Sources */,
+				C3630D762C076B910010EE86 /* TodoGroupEntity.swift in Sources */,
+				C3630D552C076A4C0010EE86 /* CoreStoreDBApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C387230C2B75488200B66242 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -893,6 +1014,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		C3630D5D2C076A4E0010EE86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CoreStoreDB/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ByteriX.CoreStore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C3630D5E2C076A4E0010EE86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CoreStoreDB/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ByteriX.CoreStore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C38723322B75488500B66242 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1407,6 +1586,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C3630D5F2C076A4E0010EE86 /* Build configuration list for PBXNativeTarget "CoreStoreDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3630D5D2C076A4E0010EE86 /* Debug */,
+				C3630D5E2C076A4E0010EE86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C387230B2B75488200B66242 /* Build configuration list for PBXProject "DBiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1507,6 +1695,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C3630D782C07BAA70010EE86 /* XCRemoteSwiftPackageReference "CoreStore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnEstropia/CoreStore.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.2.0;
+			};
+		};
 		C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vapor/fluent-sqlite-driver.git";
@@ -1526,6 +1722,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C3630D792C07BAA70010EE86 /* CoreStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3630D782C07BAA70010EE86 /* XCRemoteSwiftPackageReference "CoreStore" */;
+			productName = CoreStore;
+		};
+		C3630D7B2C08703C0010EE86 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */;
+			productName = Core;
+		};
 		C387233E2B75495E00B66242 /* FluentSQLiteDriver */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C387233D2B75495E00B66242 /* XCRemoteSwiftPackageReference "fluent-sqlite-driver" */;

@@ -1,5 +1,5 @@
 {
-  "originHash" : "8d64a66aa511c8649f544625cee1bea44af086fb94ab0b614e3bbe3351a3382b",
+  "originHash" : "63287264e1ac433d915564e118ee57fc48154daeef6766ccee4eb3893b467c5f",
   "pins" : [
     {
       "identity" : "async-kit",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "7ece208cd401687641c88367a00e3ea2b04311f1",
         "version" : "1.19.0"
+      }
+    },
+    {
+      "identity" : "corestore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnEstropia/CoreStore.git",
+      "state" : {
+        "revision" : "4b6d9a54e75d2c9fd2c3c768f7d4aa3175c09133",
+        "version" : "9.2.0"
       }
     },
     {
