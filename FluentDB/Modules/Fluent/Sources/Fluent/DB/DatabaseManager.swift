@@ -11,7 +11,7 @@ import FluentKit
 import NIO
 import Core
 
-class DatabaseManager: DatabaseProtocol {
+public class DatabaseManager: DatabaseProtocol {
 
     private static var threadsCount: Int {
         System.coreCount
@@ -24,7 +24,7 @@ class DatabaseManager: DatabaseProtocol {
 
     private var dbs: Databases?
 
-    static let shared = DatabaseManager()
+    public static let shared = DatabaseManager()
 
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

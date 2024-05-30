@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Core
+import Fluent
 
 @main
 struct FluentDBApp: App {
