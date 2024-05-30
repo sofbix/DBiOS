@@ -14,13 +14,13 @@ let package = Package(
             targets: ["SwiftDataModule"]),
     ],
     dependencies: [
-        
+        .package(path: "../../Core"),
     ],
     targets: [
         .target(
             name: "SwiftDataModule",
             dependencies: [
-                
+                .product(name: "Core", package: "Core")
             ],
             path: "Sources/SwiftDataModule"
         )

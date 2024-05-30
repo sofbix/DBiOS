@@ -19,6 +19,14 @@
 		C3630D852C091B6E0010EE86 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D842C091B6E0010EE86 /* Fluent */; };
 		C3630D8B2C0920810010EE86 /* RealmDBModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D8A2C0920810010EE86 /* RealmDBModule */; };
 		C3630D8E2C0923F60010EE86 /* SwiftDataModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D8D2C0923F60010EE86 /* SwiftDataModule */; };
+		C3630D962C0926650010EE86 /* PerformanceAllDbApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D952C0926650010EE86 /* PerformanceAllDbApp.swift */; };
+		C3630D982C0926650010EE86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D972C0926650010EE86 /* ContentView.swift */; };
+		C3630D9A2C0926670010EE86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3630D992C0926670010EE86 /* Assets.xcassets */; };
+		C3630D9D2C0926670010EE86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3630D9C2C0926670010EE86 /* Preview Assets.xcassets */; };
+		C3630DA22C09279B0010EE86 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA12C09279B0010EE86 /* Core */; };
+		C3630DA42C09279B0010EE86 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA32C09279B0010EE86 /* Fluent */; };
+		C3630DA62C09279B0010EE86 /* RealmDBModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA52C09279B0010EE86 /* RealmDBModule */; };
+		C3630DA82C09279B0010EE86 /* SwiftDataModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA72C09279B0010EE86 /* SwiftDataModule */; };
 		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
 		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
 		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
@@ -113,6 +121,11 @@
 		C3630D712C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStoreDatabaseQuery.swift; sourceTree = "<group>"; };
 		C3630D732C076B810010EE86 /* TodoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEntity.swift; sourceTree = "<group>"; };
 		C3630D752C076B910010EE86 /* TodoGroupEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroupEntity.swift; sourceTree = "<group>"; };
+		C3630D932C0926650010EE86 /* PerformanceAllDb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerformanceAllDb.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3630D952C0926650010EE86 /* PerformanceAllDbApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceAllDbApp.swift; sourceTree = "<group>"; };
+		C3630D972C0926650010EE86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3630D992C0926670010EE86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3630D9C2C0926670010EE86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C38723102B75488300B66242 /* FluentDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluentDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38723132B75488300B66242 /* FluentDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBApp.swift; sourceTree = "<group>"; };
 		C38723172B75488500B66242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +162,17 @@
 			files = (
 				C3630D7A2C07BAA70010EE86 /* CoreStore in Frameworks */,
 				C3630D7C2C08703C0010EE86 /* Core in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3630D902C0926650010EE86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3630DA82C09279B0010EE86 /* SwiftDataModule in Frameworks */,
+				C3630DA42C09279B0010EE86 /* Fluent in Frameworks */,
+				C3630DA62C09279B0010EE86 /* RealmDBModule in Frameworks */,
+				C3630DA22C09279B0010EE86 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +296,25 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C3630D942C0926650010EE86 /* PerformanceAllDb */ = {
+			isa = PBXGroup;
+			children = (
+				C3630D952C0926650010EE86 /* PerformanceAllDbApp.swift */,
+				C3630D972C0926650010EE86 /* ContentView.swift */,
+				C3630D992C0926670010EE86 /* Assets.xcassets */,
+				C3630D9B2C0926670010EE86 /* Preview Content */,
+			);
+			path = PerformanceAllDb;
+			sourceTree = "<group>";
+		};
+		C3630D9B2C0926670010EE86 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C3630D9C2C0926670010EE86 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		C38723072B75488200B66242 = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +328,7 @@
 				C3A4DADA2BEE77260010FD6D /* RealmDBTests */,
 				C3A4DAE42BEE77260010FD6D /* RealmDBUITests */,
 				C3630D532C076A4C0010EE86 /* CoreStoreDB */,
+				C3630D942C0926650010EE86 /* PerformanceAllDb */,
 				C38723112B75488300B66242 /* Products */,
 				C3A4DAB92BEE0B6B0010FD6D /* Frameworks */,
 			);
@@ -303,6 +347,7 @@
 				C3A4DAD72BEE77260010FD6D /* RealmDBTests.xctest */,
 				C3A4DAE12BEE77260010FD6D /* RealmDBUITests.xctest */,
 				C3630D522C076A4C0010EE86 /* CoreStoreDB.app */,
+				C3630D932C0926650010EE86 /* PerformanceAllDb.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -441,6 +486,29 @@
 			);
 			productName = CoreStore;
 			productReference = C3630D522C076A4C0010EE86 /* CoreStoreDB.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C3630D922C0926650010EE86 /* PerformanceAllDb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3630DA02C0926670010EE86 /* Build configuration list for PBXNativeTarget "PerformanceAllDb" */;
+			buildPhases = (
+				C3630D8F2C0926650010EE86 /* Sources */,
+				C3630D902C0926650010EE86 /* Frameworks */,
+				C3630D912C0926650010EE86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PerformanceAllDb;
+			packageProductDependencies = (
+				C3630DA12C09279B0010EE86 /* Core */,
+				C3630DA32C09279B0010EE86 /* Fluent */,
+				C3630DA52C09279B0010EE86 /* RealmDBModule */,
+				C3630DA72C09279B0010EE86 /* SwiftDataModule */,
+			);
+			productName = PerformanceAllDb;
+			productReference = C3630D932C0926650010EE86 /* PerformanceAllDb.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C387230F2B75488200B66242 /* FluentDB */ = {
@@ -630,6 +698,9 @@
 					C3630D512C076A4C0010EE86 = {
 						CreatedOnToolsVersion = 15.4;
 					};
+					C3630D922C0926650010EE86 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					C387230F2B75488200B66242 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -697,6 +768,7 @@
 				C3A4DAD62BEE77260010FD6D /* RealmDBTests */,
 				C3A4DAE02BEE77260010FD6D /* RealmDBUITests */,
 				C3630D512C076A4C0010EE86 /* CoreStoreDB */,
+				C3630D922C0926650010EE86 /* PerformanceAllDb */,
 			);
 		};
 /* End PBXProject section */
@@ -708,6 +780,15 @@
 			files = (
 				C3630D5C2C076A4E0010EE86 /* Preview Assets.xcassets in Resources */,
 				C3630D592C076A4E0010EE86 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3630D912C0926650010EE86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3630D9D2C0926670010EE86 /* Preview Assets.xcassets in Resources */,
+				C3630D9A2C0926670010EE86 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +873,15 @@
 				C3630D742C076B810010EE86 /* TodoEntity.swift in Sources */,
 				C3630D762C076B910010EE86 /* TodoGroupEntity.swift in Sources */,
 				C3630D552C076A4C0010EE86 /* CoreStoreDBApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3630D8F2C0926650010EE86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3630D982C0926650010EE86 /* ContentView.swift in Sources */,
+				C3630D962C0926650010EE86 /* PerformanceAllDbApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,6 +1047,64 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ByteriX.CoreStore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C3630D9E2C0926670010EE86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PerformanceAllDb/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ByteriX.PerformanceAllDb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C3630D9F2C0926670010EE86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PerformanceAllDb/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ByteriX.PerformanceAllDb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1487,6 +1635,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C3630DA02C0926670010EE86 /* Build configuration list for PBXNativeTarget "PerformanceAllDb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3630D9E2C0926670010EE86 /* Debug */,
+				C3630D9F2C0926670010EE86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C387230B2B75488200B66242 /* Build configuration list for PBXProject "DBiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1646,6 +1803,26 @@
 		};
 		C3630D8D2C0923F60010EE86 /* SwiftDataModule */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = SwiftDataModule;
+		};
+		C3630DA12C09279B0010EE86 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */;
+			productName = Core;
+		};
+		C3630DA32C09279B0010EE86 /* Fluent */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3630D832C091B6E0010EE86 /* XCLocalSwiftPackageReference "Modules/Fluent" */;
+			productName = Fluent;
+		};
+		C3630DA52C09279B0010EE86 /* RealmDBModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3630D892C0920810010EE86 /* XCLocalSwiftPackageReference "Modules/RealmDBModule" */;
+			productName = RealmDBModule;
+		};
+		C3630DA72C09279B0010EE86 /* SwiftDataModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3630D8C2C0923F60010EE86 /* XCLocalSwiftPackageReference "Modules/SwiftDataModule" */;
 			productName = SwiftDataModule;
 		};
 		C387233E2B75495E00B66242 /* FluentSQLiteDriver */ = {
