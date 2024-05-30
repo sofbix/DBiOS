@@ -24,7 +24,7 @@ class DatabaseManager: DatabaseProtocol {
     }
 
     init() {
-        let path = Self.getDocumentsDirectory().appendingPathComponent("sqlite.db")
+        let path = Self.getDocumentsDirectory().appendingPathComponent("SwiftData.db")
         print(path.absoluteString)
         configuration = ModelConfiguration(
 //            schema: Schema([

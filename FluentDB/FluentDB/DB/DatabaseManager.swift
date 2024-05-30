@@ -37,7 +37,7 @@ class DatabaseManager: DatabaseProtocol {
     }
 
     public func start() async {
-        let path = getDocumentsDirectory().appendingPathComponent("sqlite.db")
+        let path = getDocumentsDirectory().appendingPathComponent("Fluent.db")
         print(path.absoluteString)
         
         let configuration: SQLiteConfiguration = .init(storage:.file(path: path.absoluteString))
