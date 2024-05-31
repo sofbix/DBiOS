@@ -25,6 +25,7 @@
 		C3630DA82C09279B0010EE86 /* SwiftDataModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA72C09279B0010EE86 /* SwiftDataModule */; };
 		C3630DAB2C09B5650010EE86 /* CoreStoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DAA2C09B5650010EE86 /* CoreStoreModule */; };
 		C3630DAD2C09B7BF0010EE86 /* CoreStoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DAC2C09B7BF0010EE86 /* CoreStoreModule */; };
+		C3630DAF2C09F5BB0010EE86 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C3630DAE2C09F5BB0010EE86 /* README.md */; };
 		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
 		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
 		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
@@ -120,6 +121,7 @@
 		C3630D972C0926650010EE86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C3630D992C0926670010EE86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3630D9C2C0926670010EE86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C3630DAE2C09F5BB0010EE86 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C38723102B75488300B66242 /* FluentDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluentDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38723132B75488300B66242 /* FluentDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentDBApp.swift; sourceTree = "<group>"; };
 		C38723172B75488500B66242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				C3630D542C076A4C0010EE86 /* CoreStoreDBApp.swift */,
-				C3630D6E2C076B0C0010EE86 /* View */,
 				C3630D582C076A4E0010EE86 /* Assets.xcassets */,
 				C3630D5A2C076A4E0010EE86 /* Preview Content */,
 			);
@@ -263,13 +264,6 @@
 				C3630D5B2C076A4E0010EE86 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		C3630D6E2C076B0C0010EE86 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C3630D942C0926650010EE86 /* PerformanceAllDb */ = {
@@ -294,6 +288,7 @@
 		C38723072B75488200B66242 = {
 			isa = PBXGroup;
 			children = (
+				C3630DAE2C09F5BB0010EE86 /* README.md */,
 				C38723122B75488300B66242 /* FluentDB */,
 				C38723232B75488500B66242 /* FluentDBTests */,
 				C387232D2B75488500B66242 /* FluentDBUITests */,
@@ -775,6 +770,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3630DAF2C09F5BB0010EE86 /* README.md in Resources */,
 				C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */,
 				C38723182B75488500B66242 /* Assets.xcassets in Resources */,
 			);
