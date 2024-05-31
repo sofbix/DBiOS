@@ -10,10 +10,15 @@ import Core
 import Fluent
 import RealmDBModule
 import SwiftDataModule
+import CoreStoreModule
 
 struct ContentView: View {
+
+    @State
+    var selectedTab: Int = 0
+
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             PerformanceFacadeView(name: "Fluent", db: Fluent.DatabaseManager.shared, dbQuery: Fluent.FluentDatabaseQuery(databaseManager: Fluent.DatabaseManager.shared))
                 .tabItem{
                     Image("Fluent")
@@ -25,13 +30,19 @@ struct ContentView: View {
                     Image("Realm")
                     Text("Realm")
                 }
-                .tag(0)
+                .tag(1)
             PerformanceFacadeView(name: "SwiftData", db: SwiftDataModule.DatabaseManager.shared, dbQuery: SwiftDataModule.SwiftDataDatabaseQuery(databaseManager: SwiftDataModule.DatabaseManager.shared))
                 .tabItem{
                     Image("SwiftData")
                     Text("SwiftData")
                 }
-                .tag(0)
+                .tag(2)
+            PerformanceFacadeView(name: "CoreStore", db: CoreStoreModule.DatabaseManager.shared, dbQuery: CoreStoreModule.CoreStoreDatabaseQuery(databaseManager: CoreStoreModule.DatabaseManager.shared))
+                .tabItem{
+                    Image("CoreStore")
+                    Text("CoreStore")
+                }
+                .tag(3)
         }
     }
 }

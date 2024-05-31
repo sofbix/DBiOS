@@ -24,6 +24,7 @@
 		C3630DA62C09279B0010EE86 /* RealmDBModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA52C09279B0010EE86 /* RealmDBModule */; };
 		C3630DA82C09279B0010EE86 /* SwiftDataModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA72C09279B0010EE86 /* SwiftDataModule */; };
 		C3630DAB2C09B5650010EE86 /* CoreStoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DAA2C09B5650010EE86 /* CoreStoreModule */; };
+		C3630DAD2C09B7BF0010EE86 /* CoreStoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DAC2C09B7BF0010EE86 /* CoreStoreModule */; };
 		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
 		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
 		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
@@ -167,6 +168,7 @@
 				C3630DA42C09279B0010EE86 /* Fluent in Frameworks */,
 				C3630DA62C09279B0010EE86 /* RealmDBModule in Frameworks */,
 				C3630DA22C09279B0010EE86 /* Core in Frameworks */,
+				C3630DAD2C09B7BF0010EE86 /* CoreStoreModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +483,7 @@
 				C3630DA32C09279B0010EE86 /* Fluent */,
 				C3630DA52C09279B0010EE86 /* RealmDBModule */,
 				C3630DA72C09279B0010EE86 /* SwiftDataModule */,
+				C3630DAC2C09B7BF0010EE86 /* CoreStoreModule */,
 			);
 			productName = PerformanceAllDb;
 			productReference = C3630D932C0926650010EE86 /* PerformanceAllDb.app */;
@@ -1803,6 +1806,11 @@
 		};
 		C3630DAA2C09B5650010EE86 /* CoreStoreModule */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = CoreStoreModule;
+		};
+		C3630DAC2C09B7BF0010EE86 /* CoreStoreModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3630DA92C09B5650010EE86 /* XCLocalSwiftPackageReference "Modules/CoreStoreModule" */;
 			productName = CoreStoreModule;
 		};
 		C387233E2B75495E00B66242 /* FluentSQLiteDriver */ = {
