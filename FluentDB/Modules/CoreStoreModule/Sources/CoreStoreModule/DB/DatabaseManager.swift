@@ -9,9 +9,9 @@ import Foundation
 import CoreStore
 import Core
 
-class DatabaseManager: DatabaseProtocol {
+public class DatabaseManager: DatabaseProtocol {
 
-    static let shared = DatabaseManager()
+    public static let shared = DatabaseManager()
 
     static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -19,7 +19,7 @@ class DatabaseManager: DatabaseProtocol {
         return documentsDirectory
     }
 
-    var dataStack: DataStack {
+    public var dataStack: DataStack {
         CoreStoreDefaults.dataStack
     }
 

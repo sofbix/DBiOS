@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Core
+import CoreStoreModule
 
 @main
 struct CoreStoreApp: App {

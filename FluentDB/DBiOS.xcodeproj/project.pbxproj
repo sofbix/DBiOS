@@ -10,10 +10,6 @@
 		C3630D552C076A4C0010EE86 /* CoreStoreDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D542C076A4C0010EE86 /* CoreStoreDBApp.swift */; };
 		C3630D592C076A4E0010EE86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3630D582C076A4E0010EE86 /* Assets.xcassets */; };
 		C3630D5C2C076A4E0010EE86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3630D5B2C076A4E0010EE86 /* Preview Assets.xcassets */; };
-		C3630D702C076B460010EE86 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D6F2C076B460010EE86 /* DatabaseManager.swift */; };
-		C3630D722C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D712C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift */; };
-		C3630D742C076B810010EE86 /* TodoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D732C076B810010EE86 /* TodoEntity.swift */; };
-		C3630D762C076B910010EE86 /* TodoGroupEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3630D752C076B910010EE86 /* TodoGroupEntity.swift */; };
 		C3630D7A2C07BAA70010EE86 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D792C07BAA70010EE86 /* CoreStore */; };
 		C3630D7C2C08703C0010EE86 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D7B2C08703C0010EE86 /* Core */; };
 		C3630D852C091B6E0010EE86 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C3630D842C091B6E0010EE86 /* Fluent */; };
@@ -27,6 +23,7 @@
 		C3630DA42C09279B0010EE86 /* Fluent in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA32C09279B0010EE86 /* Fluent */; };
 		C3630DA62C09279B0010EE86 /* RealmDBModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA52C09279B0010EE86 /* RealmDBModule */; };
 		C3630DA82C09279B0010EE86 /* SwiftDataModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DA72C09279B0010EE86 /* SwiftDataModule */; };
+		C3630DAB2C09B5650010EE86 /* CoreStoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3630DAA2C09B5650010EE86 /* CoreStoreModule */; };
 		C38723142B75488300B66242 /* FluentDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38723132B75488300B66242 /* FluentDBApp.swift */; };
 		C38723182B75488500B66242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38723172B75488500B66242 /* Assets.xcassets */; };
 		C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C387231A2B75488500B66242 /* Preview Assets.xcassets */; };
@@ -117,10 +114,6 @@
 		C3630D542C076A4C0010EE86 /* CoreStoreDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStoreDBApp.swift; sourceTree = "<group>"; };
 		C3630D582C076A4E0010EE86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3630D5B2C076A4E0010EE86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C3630D6F2C076B460010EE86 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		C3630D712C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStoreDatabaseQuery.swift; sourceTree = "<group>"; };
-		C3630D732C076B810010EE86 /* TodoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEntity.swift; sourceTree = "<group>"; };
-		C3630D752C076B910010EE86 /* TodoGroupEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroupEntity.swift; sourceTree = "<group>"; };
 		C3630D932C0926650010EE86 /* PerformanceAllDb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerformanceAllDb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3630D952C0926650010EE86 /* PerformanceAllDbApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceAllDbApp.swift; sourceTree = "<group>"; };
 		C3630D972C0926650010EE86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3630D7A2C07BAA70010EE86 /* CoreStore in Frameworks */,
+				C3630DAB2C09B5650010EE86 /* CoreStoreModule in Frameworks */,
 				C3630D7C2C08703C0010EE86 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,8 +247,7 @@
 		C3630D532C076A4C0010EE86 /* CoreStoreDB */ = {
 			isa = PBXGroup;
 			children = (
-				C3630D6D2C076B0C0010EE86 /* DB */,
-				C3630D6C2C076B0C0010EE86 /* Entities */,
+				C3630D542C076A4C0010EE86 /* CoreStoreDBApp.swift */,
 				C3630D6E2C076B0C0010EE86 /* View */,
 				C3630D582C076A4E0010EE86 /* Assets.xcassets */,
 				C3630D5A2C076A4E0010EE86 /* Preview Content */,
@@ -270,28 +263,9 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C3630D6C2C076B0C0010EE86 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				C3630D732C076B810010EE86 /* TodoEntity.swift */,
-				C3630D752C076B910010EE86 /* TodoGroupEntity.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
-		C3630D6D2C076B0C0010EE86 /* DB */ = {
-			isa = PBXGroup;
-			children = (
-				C3630D6F2C076B460010EE86 /* DatabaseManager.swift */,
-				C3630D712C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift */,
-			);
-			path = DB;
-			sourceTree = "<group>";
-		};
 		C3630D6E2C076B0C0010EE86 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C3630D542C076A4C0010EE86 /* CoreStoreDBApp.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -483,6 +457,7 @@
 			packageProductDependencies = (
 				C3630D792C07BAA70010EE86 /* CoreStore */,
 				C3630D7B2C08703C0010EE86 /* Core */,
+				C3630DAA2C09B5650010EE86 /* CoreStoreModule */,
 			);
 			productName = CoreStore;
 			productReference = C3630D522C076A4C0010EE86 /* CoreStoreDB.app */;
@@ -753,6 +728,7 @@
 				C3630D832C091B6E0010EE86 /* XCLocalSwiftPackageReference "Modules/Fluent" */,
 				C3630D892C0920810010EE86 /* XCLocalSwiftPackageReference "Modules/RealmDBModule" */,
 				C3630D8C2C0923F60010EE86 /* XCLocalSwiftPackageReference "Modules/SwiftDataModule" */,
+				C3630DA92C09B5650010EE86 /* XCLocalSwiftPackageReference "Modules/CoreStoreModule" */,
 			);
 			productRefGroup = C38723112B75488300B66242 /* Products */;
 			projectDirPath = "";
@@ -868,10 +844,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3630D722C076B6C0010EE86 /* CoreStoreDatabaseQuery.swift in Sources */,
-				C3630D702C076B460010EE86 /* DatabaseManager.swift in Sources */,
-				C3630D742C076B810010EE86 /* TodoEntity.swift in Sources */,
-				C3630D762C076B910010EE86 /* TodoGroupEntity.swift in Sources */,
 				C3630D552C076A4C0010EE86 /* CoreStoreDBApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1749,6 +1721,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/SwiftDataModule;
 		};
+		C3630DA92C09B5650010EE86 /* XCLocalSwiftPackageReference "Modules/CoreStoreModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/CoreStoreModule;
+		};
 		C3A4DAB82BEE0AE90010FD6D /* XCLocalSwiftPackageReference "Core" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Core;
@@ -1824,6 +1800,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C3630D8C2C0923F60010EE86 /* XCLocalSwiftPackageReference "Modules/SwiftDataModule" */;
 			productName = SwiftDataModule;
+		};
+		C3630DAA2C09B5650010EE86 /* CoreStoreModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreStoreModule;
 		};
 		C387233E2B75495E00B66242 /* FluentSQLiteDriver */ = {
 			isa = XCSwiftPackageProductDependency;

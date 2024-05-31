@@ -10,9 +10,13 @@ import CoreStore
 import Core
 
 
-struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
+public struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
 
     let databaseManager: DatabaseManager
+
+    public init(databaseManager: DatabaseManager) {
+        self.databaseManager = databaseManager
+    }
 
     private func synchronous<T>(_ handler: (_ transaction: SynchronousDataTransaction) throws -> T) throws -> T {
         try databaseManager.dataStack.perform(
@@ -23,13 +27,13 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         )
     }
 
-    func getAllGroupsCount() async throws -> Int {
+    public func getAllGroupsCount() async throws -> Int {
         try synchronous { dataStack in
             try dataStack.fetchCount( From<TodoGroupEntity>() )
         }
     }
 
-    func getAllGroups() async throws -> [Group] {
+    public func getAllGroups() async throws -> [Group] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
                 From<TodoGroupEntity>()
@@ -40,7 +44,7 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         }
     }
 
-    func getGroups(with searchText: String) async throws -> [TodoGroup] {
+    public func getGroups(with searchText: String) async throws -> [TodoGroup] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
                 searchText.isEmpty == true
@@ -61,26 +65,26 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         }
     }
 
-    func addNewGroup(name: String) async throws {
+    public func addNewGroup(name: String) async throws {
         try synchronous { transaction in
             let group = transaction.create(Into<TodoGroupEntity>())
             group.name = name
         }
     }
 
-    func removeAllGroups() async throws {
+    public func removeAllGroups() async throws {
         _ = try databaseManager.dataStack.perform( synchronous: { transaction in
             try transaction.deleteAll(From<TodoGroupEntity>())
         }, waitForAllObservers: true)
     }
 
-    func getAllTasksCount() async throws -> Int {
+    public func getAllTasksCount() async throws -> Int {
         try synchronous { dataStack in
             try dataStack.fetchCount( From<TodoEntity>() )
         }
     }
 
-    func getTasksWithoutGroup() async throws -> [Todo] {
+    public func getTasksWithoutGroup() async throws -> [Todo] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
                 From<TodoEntity>()
@@ -90,7 +94,7 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         }
     }
 
-    func getTasks(with searchText: String) async throws -> [Todo] {
+    public func getTasks(with searchText: String) async throws -> [Todo] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
                 searchText.isEmpty == true
@@ -109,7 +113,7 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         }
     }
 
-    func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo] {
+    public func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
                 From<TodoEntity>()
@@ -119,7 +123,7 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         }
     }
 
-    func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo] {
+    public func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo] {
         try synchronous { dataStack in
             try dataStack.fetchAll(
                 From<TodoEntity>()
@@ -129,7 +133,7 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         }
     }
 
-    func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Group) async throws {
+    public func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Group) async throws {
         try databaseManager.dataStack.perform( synchronous: { transaction in
             let todo = transaction.create(Into<TodoEntity>())
             todo.name = name
@@ -140,7 +144,7 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         }, waitForAllObservers: true)
     }
 
-    func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws {
+    public func updateTodo(_ editedTodo: Todo, name: String, comments: String, selectedGroup: Group) async throws {
         try synchronous { dataStack in
             guard let todo = try dataStack.fetchOne(
                 From<TodoEntity>()
@@ -164,7 +168,7 @@ struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
         )
     }
 
-    func removeAllTodos() async throws {
+    public func removeAllTodos() async throws {
         _ = try databaseManager.dataStack.perform( synchronous: { transaction in
             try transaction.deleteAll(From<TodoEntity>())
         }, waitForAllObservers: true)
