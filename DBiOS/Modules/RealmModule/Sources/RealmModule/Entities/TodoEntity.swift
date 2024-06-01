@@ -7,7 +7,7 @@
 
 import Foundation
 import RealmSwift
-import Core
+import CoreModule
 
 final class TodoEntity : Object {
 

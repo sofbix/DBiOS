@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import Core
-import Fluent
+import CoreModule
+import FluentModule
 
 @main
 struct FluentDBApp: App {

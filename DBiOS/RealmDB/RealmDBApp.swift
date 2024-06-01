@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import Core
-import RealmDBModule
+import CoreModule
+import RealmModule
 
 @main
 struct RealmDBApp: App {

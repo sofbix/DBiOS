@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import Core
-import Fluent
-import RealmDBModule
+import CoreModule
+import FluentModule
+import RealmModule
 import SwiftDataModule
 import CoreStoreModule
 
@@ -19,13 +19,13 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            PerformanceFacadeView(name: "Fluent", db: Fluent.DatabaseManager.shared, dbQuery: Fluent.FluentDatabaseQuery(databaseManager: Fluent.DatabaseManager.shared))
+            PerformanceFacadeView(name: "Fluent", db: FluentModule.DatabaseManager.shared, dbQuery: FluentModule.FluentDatabaseQuery(databaseManager: FluentModule.DatabaseManager.shared))
                 .tabItem{
                     Image("Fluent")
                     Text("Fluent")
                 }
                 .tag(0)
-            PerformanceFacadeView(name: "Realm", db: RealmDBModule.DatabaseManager.shared, dbQuery: RealmDBModule.RealmDatabaseQuery(databaseManager: RealmDBModule.DatabaseManager.shared))
+            PerformanceFacadeView(name: "Realm", db: RealmModule.DatabaseManager.shared, dbQuery: RealmModule.RealmDatabaseQuery(databaseManager: RealmModule.DatabaseManager.shared))
                 .tabItem{
                     Image("Realm")
                     Text("Realm")

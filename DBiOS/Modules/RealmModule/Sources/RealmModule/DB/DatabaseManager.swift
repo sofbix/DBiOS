@@ -7,7 +7,7 @@
 
 import Foundation
 import RealmSwift
-import Core
+import CoreModule
 
 public class DatabaseManager: DatabaseProtocol {
 

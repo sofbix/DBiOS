@@ -4,22 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "Core",
+    name: "CoreModule",
     platforms: [
         .iOS(.v16)
     ],
     products: [
         .library(
-            name: "Core",
-            targets: ["Core"]),
+            name: "CoreModule",
+            targets: ["CoreModule"]),
     ],
     dependencies: [
     ],
     targets: [
         .target(
-            name: "Core",
+            name: "CoreModule",
             dependencies: [],
-            path: "Sources/Core"
+            path: "Sources/CoreModule"
         )
     ]
 )

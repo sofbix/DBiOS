@@ -7,7 +7,7 @@
 
 import Foundation
 import RealmSwift
-import Core
+import CoreModule
 
 
 public struct RealmDatabaseQuery : DatabaseQueryProtocol {

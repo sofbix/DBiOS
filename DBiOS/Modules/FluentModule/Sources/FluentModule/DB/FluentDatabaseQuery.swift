@@ -7,7 +7,7 @@
 
 import Foundation
 import FluentKit
-import Core
+import CoreModule
 
 
 public struct FluentDatabaseQuery : DatabaseQueryProtocol {

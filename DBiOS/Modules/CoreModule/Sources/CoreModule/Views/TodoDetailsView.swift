@@ -95,7 +95,7 @@ struct TodoDetailsView: View {
             groups = try await container.dbQuery.getAllGroups()
             groups.append(Group(name: ""))
 
-            var selectedGroup: Group = groups.first{ item in
+            let selectedGroup: Group = groups.first{ item in
                 item.id == editedTodo?.groupId
             } ?? groups.last ?? Group(name: "")
 

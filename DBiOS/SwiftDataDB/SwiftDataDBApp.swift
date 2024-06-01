@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Core
+import CoreModule
 import SwiftDataModule
 
 @main

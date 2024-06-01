@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftData
-import Core
+import CoreModule
 
 public struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
 
@@ -107,7 +107,7 @@ public struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
-    public func getTasks(startDate: Date, stopDate: Date) async throws -> [Core.Todo] {
+    public func getTasks(startDate: Date, stopDate: Date) async throws -> [Todo] {
         let newContext = ModelContext(DatabaseManager.shared.container)
         let todosPredicate = #Predicate<TodoEntity>{ entity in
             if let date = entity.date {
@@ -126,7 +126,7 @@ public struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
-    public func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Core.Todo] {
+    public func getTasks(startPriority: Int, stopPriority: Int) async throws -> [Todo] {
         let newContext = ModelContext(DatabaseManager.shared.container)
         let todosPredicate = #Predicate<TodoEntity>{ entity in
             if let priority = entity.priority {
@@ -145,7 +145,7 @@ public struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
         return todos
     }
 
-    public func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Core.Group) async throws {
+    public func addNewTodo(name: String, comments: String, date: Date, priority: Int?, selectedGroup: Group) async throws {
         let modelContext = ModelContext(DatabaseManager.shared.container)
         let todo = TodoEntity(id: nil, name: name, date: date, priority: priority)
         todo.comments = comments

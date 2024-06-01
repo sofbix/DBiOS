@@ -4,25 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "RealmDBModule",
+    name: "RealmModule",
     platforms: [
         .iOS(.v16)
     ],
     products: [
         .library(
-            name: "RealmDBModule",
-            targets: ["RealmDBModule"]),
+            name: "RealmModule",
+            targets: ["RealmModule"]),
     ],
     dependencies: [
         .package(url: "https://github.com/realm/realm-swift", from: "10.50.0"),
     ],
     targets: [
         .target(
-            name: "RealmDBModule",
+            name: "RealmModule",
             dependencies: [
                 .product(name: "RealmSwift", package: "realm-swift")
             ],
-            path: "Sources/RealmDBModule"
+            path: "Sources/RealmModule"
         )
     ]
 )

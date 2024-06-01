@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftData
-import Core
+import CoreModule
 
 public class DatabaseManager: DatabaseProtocol {
 

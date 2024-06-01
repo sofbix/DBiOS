@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftData
-import Core
+import CoreModule
 
 @Model
 final class TodoEntity {

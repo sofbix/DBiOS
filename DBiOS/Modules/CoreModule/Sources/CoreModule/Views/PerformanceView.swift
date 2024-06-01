@@ -270,13 +270,13 @@ extension PerformanceView {
         guard isStopping == false else {
             return
         }
-        var startDate = Date()
+        let startDate = Date()
 
         if isCalculateAsync {
             try await withThrowingTaskGroup(of: Void.self) { group in
                 for i in 1...iterationCount{
                     group.addTask {
-                        await try handle(i)
+                        try await handle(i)
                     }
                 }
                 try await group.waitForAll()
@@ -339,7 +339,7 @@ extension PerformanceView {
     func readGroups(_ repeatIndex: Int) async throws {
         try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Groups", group: .readGroup) 
         { index in
-            try await readGroupsOperation()
+            _ = try await readGroupsOperation()
         }
     }
 
@@ -365,7 +365,7 @@ extension PerformanceView {
     func readTodosWithName(_ repeatIndex: Int) async throws {
         try await calculateFrequency(title: "\(repeatIndex). Reading random \(iterationCount) Todos with Name", group: .readTodoWithName) 
         { index in
-            try await readTodosWithNameOperation()
+            _ = try await readTodosWithNameOperation()
         }
     }
 
@@ -373,7 +373,7 @@ extension PerformanceView {
         var date = Date()
         let aditionHours = Double(Int.random(in: -Self.weekMinutes..<Self.weekMinutes))
         date.addTimeInterval(aditionHours * 60.0)
-        try await container.dbQuery.getTasks(startDate: date.addingTimeInterval(-60), stopDate: date.addingTimeInterval(60))
+        _ = try await container.dbQuery.getTasks(startDate: date.addingTimeInterval(-60), stopDate: date.addingTimeInterval(60))
     }
     
     func readTodosWithDate(_ repeatIndex: Int) async throws {
@@ -385,7 +385,7 @@ extension PerformanceView {
 
     fileprivate func readTodosWithPriorityOperation() async throws {
         let priority = Int.random(in: 0..<1000000)
-        try await container.dbQuery.getTasks(startPriority: priority, stopPriority: priority + 10)
+        _ = try await container.dbQuery.getTasks(startPriority: priority, stopPriority: priority + 10)
     }
     
     func readTodosWithPriority(_ repeatIndex: Int) async throws {
@@ -403,11 +403,11 @@ extension PerformanceView {
             case .addGroup:
                 try await addGroupsOperation(index)
             case .readGroup:
-                try await readGroupsOperation()
+                _ = try await readGroupsOperation()
             case .addTodo:
                 try await addTodosOperation(index)
             case .readTodoWithName:
-                try await readTodosWithNameOperation()
+                _ = try await readTodosWithNameOperation()
             case .readTodoWithDate:
                 try await readTodosWithDateOperation()
             case .readTodoWithPriority:

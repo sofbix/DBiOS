@@ -4,25 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "Fluent",
+    name: "FluentModule",
     platforms: [
         .iOS(.v16)
     ],
     products: [
         .library(
-            name: "Fluent",
-            targets: ["Fluent"]),
+            name: "FluentModule",
+            targets: ["FluentModule"]),
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/fluent-sqlite-driver", from: "4.6.0"),
     ],
     targets: [
         .target(
-            name: "Fluent",
+            name: "FluentModule",
             dependencies: [
                 .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver")
             ],
-            path: "Sources/Fluent"
+            path: "Sources/FluentModule"
         )
     ]
 )

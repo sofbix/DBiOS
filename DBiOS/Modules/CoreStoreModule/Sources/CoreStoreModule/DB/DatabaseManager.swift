@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreStore
-import Core
+import CoreModule
 
 public class DatabaseManager: DatabaseProtocol {
 

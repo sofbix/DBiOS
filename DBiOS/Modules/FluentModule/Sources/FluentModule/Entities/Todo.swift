@@ -7,7 +7,7 @@
 
 import Foundation
 import FluentKit
-import Core
+import CoreModule
 import SQLKit
 
 final class TodoEntity : Model {

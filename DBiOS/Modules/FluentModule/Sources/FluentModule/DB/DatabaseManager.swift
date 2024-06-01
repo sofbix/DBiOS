@@ -9,7 +9,7 @@ import Foundation
 import FluentSQLiteDriver
 import FluentKit
 import NIO
-import Core
+import CoreModule
 
 public class DatabaseManager: DatabaseProtocol {
 
