@@ -1,5 +1,5 @@
 //
-//  FluentDatabaseQuery.swift
+//  DatabaseQuery.swift
 //  FluentDB
 //
 //  Created by Sergey Balalaev on 10.05.2024.
@@ -10,7 +10,7 @@ import FluentKit
 import CoreModule
 
 
-public struct FluentDatabaseQuery : DatabaseQueryProtocol {
+public struct DatabaseQuery : DatabaseQueryProtocol {
     let databaseManager: DatabaseManager
 
     public init(databaseManager: DatabaseManager) {

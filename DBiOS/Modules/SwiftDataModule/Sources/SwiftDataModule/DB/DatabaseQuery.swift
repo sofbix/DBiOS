@@ -1,5 +1,5 @@
 //
-//  SwiftDataDatabaseQuery.swift
+//  DatabaseQuery.swift
 //  SwiftDataDB
 //
 //  Created by Sergey Balalaev on 10.05.2024.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import CoreModule
 
-public struct SwiftDataDatabaseQuery : DatabaseQueryProtocol {
+public struct DatabaseQuery : DatabaseQueryProtocol {
 
     let databaseManager: DatabaseManager
 

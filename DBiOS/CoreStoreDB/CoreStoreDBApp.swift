@@ -13,7 +13,7 @@ import CoreStoreModule
 struct CoreStoreApp: App {
     var body: some Scene {
         WindowGroup {
-            StartView(db: DatabaseManager.shared, dbQuery: CoreStoreDatabaseQuery(databaseManager: DatabaseManager.shared))
+            StartView(db: DatabaseManager.shared, dbQuery: DatabaseQuery(databaseManager: DatabaseManager.shared))
         }
     }
 }

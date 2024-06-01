@@ -13,7 +13,7 @@ import SwiftDataModule
 struct SwiftDataDBApp: App {
     var body: some Scene {
         WindowGroup {
-            StartView(db: DatabaseManager.shared, dbQuery: SwiftDataDatabaseQuery(databaseManager: DatabaseManager.shared))
+            StartView(db: DatabaseManager.shared, dbQuery: DatabaseQuery(databaseManager: DatabaseManager.shared))
         }
     }
 }

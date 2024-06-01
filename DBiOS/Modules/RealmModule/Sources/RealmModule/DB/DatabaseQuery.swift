@@ -1,5 +1,5 @@
 //
-//  RealmDatabaseQuery.swift
+//  DatabaseQuery.swift
 //  RealmDB
 //
 //  Created by Sergey Balalaev on 10.05.2024.
@@ -10,7 +10,7 @@ import RealmSwift
 import CoreModule
 
 
-public struct RealmDatabaseQuery : DatabaseQueryProtocol {
+public struct DatabaseQuery : DatabaseQueryProtocol {
 
     let databaseManager: DatabaseManager
 

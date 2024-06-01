@@ -14,7 +14,7 @@ struct FluentDBApp: App {
 
     var body: some Scene {
         WindowGroup {
-            StartView(db: DatabaseManager.shared, dbQuery: FluentDatabaseQuery(databaseManager: DatabaseManager.shared))
+            StartView(db: DatabaseManager.shared, dbQuery: DatabaseQuery(databaseManager: DatabaseManager.shared))
         }
     }
 

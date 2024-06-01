@@ -1,5 +1,5 @@
 //
-//  CoreStoreDatabaseQuery.swift
+//  DatabaseQuery.swift
 //  CoreStoreDB
 //
 //  Created by Sergey Balalaev on 29.05.2024.
@@ -10,7 +10,7 @@ import CoreStore
 import CoreModule
 
 
-public struct CoreStoreDatabaseQuery : DatabaseQueryProtocol {
+public struct DatabaseQuery : DatabaseQueryProtocol {
 
     let databaseManager: DatabaseManager
 
