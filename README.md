@@ -30,7 +30,7 @@ What is difference:
 
 ```swift
     for i in 1...iterationCount{
-        try await handle(i)
+        try await query(i)
     }
 ```
 
@@ -40,7 +40,7 @@ What is difference:
     try await withThrowingTaskGroup(of: Void.self) { group in
         for i in 1...iterationCount{
             group.addTask {
-                try await handle(i)
+                try await query(i)
             }
         }
         try await group.waitForAll()

@@ -255,7 +255,7 @@ public struct PerformanceView: View {
 
 extension PerformanceView {
 
-    func calculateFrequency(title: String, group: Comment.Group, handle: @escaping  (_ index: Int) async throws -> Void) async throws {
+    func calculateFrequency(title: String, group: Comment.Group, query: @escaping  (_ index: Int) async throws -> Void) async throws {
         var iterationCount: Int = 0
         var isCalculateAsync: Bool = false
         var isStopping: Bool = false
@@ -276,14 +276,14 @@ extension PerformanceView {
             try await withThrowingTaskGroup(of: Void.self) { group in
                 for i in 1...iterationCount{
                     group.addTask {
-                        try await handle(i)
+                        try await query(i)
                     }
                 }
                 try await group.waitForAll()
             }
         } else {
             for i in 1...iterationCount{
-                try await handle(i)
+                try await query(i)
             }
         }
 
