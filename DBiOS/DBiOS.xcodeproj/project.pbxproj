@@ -55,6 +55,10 @@
 		C3C34CE92C0B456900D896CF /* CoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3C34CE82C0B456900D896CF /* CoreModule */; };
 		C3C34CEB2C0B462200D896CF /* CoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3C34CEA2C0B462200D896CF /* CoreModule */; };
 		C3C34CED2C0B462200D896CF /* FluentModule in Frameworks */ = {isa = PBXBuildFile; productRef = C3C34CEC2C0B462200D896CF /* FluentModule */; };
+		C3C34CF32C0DE26400D896CF /* CoreStore.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C34CEE2C0DE26400D896CF /* CoreStore.png */; };
+		C3C34CF42C0DE26400D896CF /* Fluent.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C34CEF2C0DE26400D896CF /* Fluent.png */; };
+		C3C34CF52C0DE26400D896CF /* Realm.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C34CF02C0DE26400D896CF /* Realm.png */; };
+		C3C34CF62C0DE26400D896CF /* SwiftData.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C34CF12C0DE26400D896CF /* SwiftData.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +163,10 @@
 		C3C34CCF2C0B425600D896CF /* FluentModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FluentModule; sourceTree = "<group>"; };
 		C3C34CD02C0B425600D896CF /* RealmModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealmModule; sourceTree = "<group>"; };
 		C3C34CD12C0B425600D896CF /* SwiftDataModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SwiftDataModule; sourceTree = "<group>"; };
+		C3C34CEE2C0DE26400D896CF /* CoreStore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoreStore.png; sourceTree = "<group>"; };
+		C3C34CEF2C0DE26400D896CF /* Fluent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fluent.png; sourceTree = "<group>"; };
+		C3C34CF02C0DE26400D896CF /* Realm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Realm.png; sourceTree = "<group>"; };
+		C3C34CF12C0DE26400D896CF /* SwiftData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwiftData.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				C3630DAE2C09F5BB0010EE86 /* README.md */,
+				C3C34CF22C0DE26400D896CF /* Docs */,
 				C3C34CD22C0B425600D896CF /* Modules */,
 				C38723122B75488300B66242 /* FluentDB */,
 				C38723232B75488500B66242 /* FluentDBTests */,
@@ -456,6 +465,18 @@
 				C3C34CD12C0B425600D896CF /* SwiftDataModule */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		C3C34CF22C0DE26400D896CF /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				C3C34CEE2C0DE26400D896CF /* CoreStore.png */,
+				C3C34CEF2C0DE26400D896CF /* Fluent.png */,
+				C3C34CF02C0DE26400D896CF /* Realm.png */,
+				C3C34CF12C0DE26400D896CF /* SwiftData.png */,
+			);
+			name = Docs;
+			path = ../Docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -788,7 +809,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C34CF32C0DE26400D896CF /* CoreStore.png in Resources */,
+				C3C34CF42C0DE26400D896CF /* Fluent.png in Resources */,
 				C3630DAF2C09F5BB0010EE86 /* README.md in Resources */,
+				C3C34CF52C0DE26400D896CF /* Realm.png in Resources */,
 				C3C34CD32C0B425600D896CF /* CoreModule in Resources */,
 				C3C34CD52C0B425600D896CF /* FluentModule in Resources */,
 				C387231B2B75488500B66242 /* Preview Assets.xcassets in Resources */,
@@ -796,6 +820,7 @@
 				C38723182B75488500B66242 /* Assets.xcassets in Resources */,
 				C3C34CD62C0B425600D896CF /* RealmModule in Resources */,
 				C3C34CD42C0B425600D896CF /* CoreStoreModule in Resources */,
+				C3C34CF62C0DE26400D896CF /* SwiftData.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

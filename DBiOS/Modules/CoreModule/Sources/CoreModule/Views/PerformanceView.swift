@@ -110,7 +110,7 @@ public struct PerformanceView: View {
                                 .textFieldStyle(.roundedBorder)
                                 .padding(0)
                         }
-                        Toggle("Async (parallel queries)", isOn: $isCalculateAsync)
+                        Toggle("Async (concurrent requests)", isOn: $isCalculateAsync)
                         Toggle("Result in Frequency (queries per second)", isOn: $isCalculateFrequency)
                         HStack {
                             Text("Wait pause (in sec.)")
