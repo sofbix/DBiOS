@@ -17,7 +17,7 @@ It needs for compare code, features and performance of different frameworks.
 
 I have implemented a DBiOS app for performance tets that compiles from target `PerformanceAllDb`:
 
-![Screen](Docs/Screen1.png)
+<img src="Docs/Screen1.png" alt="Screen" style="height:639px;"/>
 
 ### Async (concurrent requests)
 
