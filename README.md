@@ -82,7 +82,7 @@ Add `CoreModule` and `YourModule` to `Build Phase`/`Link Binaries` then you can 
 
 ### Compare Application with yours and all other frameworks
 
-Add `YourModule` from previous step to `PerformanceAllDb` target and add to [Container.swift](DBiOS/PerformanceAllDb/ContentView.swift) next tab:
+Add `YourModule` from previous step to `PerformanceAllDb` target and add to [ContentView.swift](DBiOS/PerformanceAllDb/ContentView.swift) next tab:
 
 ```swift
     PerformanceFacadeView(
@@ -98,7 +98,7 @@ Add `YourModule` from previous step to `PerformanceAllDb` target and add to [Con
 ```
 
 And you can share your framework performance with others.
-Don't forget to make a Pull to Request to share with the rest of the community.
+Don't forget to make a [Pull to Request](https://github.com/sofbix/DBiOS/pulls) to share with the rest of the community.
 
 ## License
 
