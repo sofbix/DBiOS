@@ -19,25 +19,29 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            PerformanceFacadeView(name: "Fluent", db: FluentModule.DatabaseManager.shared, dbQuery: FluentModule.DatabaseQuery(databaseManager: FluentModule.DatabaseManager.shared))
+            PerformanceFacadeView(name: "Fluent", db: FluentModule.DatabaseManager.shared, dbQuery: FluentModule.DatabaseQuery(databaseManager: FluentModule.DatabaseManager.shared)
+            )
                 .tabItem{
                     Image("Fluent")
                     Text("Fluent")
                 }
                 .tag(0)
-            PerformanceFacadeView(name: "Realm", db: RealmModule.DatabaseManager.shared, dbQuery: RealmModule.DatabaseQuery(databaseManager: RealmModule.DatabaseManager.shared))
+            PerformanceFacadeView(name: "Realm", db: RealmModule.DatabaseManager.shared, dbQuery: RealmModule.DatabaseQuery(databaseManager: RealmModule.DatabaseManager.shared)
+            )
                 .tabItem{
                     Image("Realm")
                     Text("Realm")
                 }
                 .tag(1)
-            PerformanceFacadeView(name: "SwiftData", db: SwiftDataModule.DatabaseManager.shared, dbQuery: SwiftDataModule.DatabaseQuery(databaseManager: SwiftDataModule.DatabaseManager.shared))
+            PerformanceFacadeView(name: "SwiftData", db: SwiftDataModule.DatabaseManager.shared, dbQuery: SwiftDataModule.DatabaseQuery(databaseManager: SwiftDataModule.DatabaseManager.shared)
+            )
                 .tabItem{
                     Image("SwiftData")
                     Text("SwiftData")
                 }
                 .tag(2)
-            PerformanceFacadeView(name: "CoreStore", db: CoreStoreModule.DatabaseManager.shared, dbQuery: CoreStoreModule.DatabaseQuery(databaseManager: CoreStoreModule.DatabaseManager.shared))
+            PerformanceFacadeView(name: "CoreStore", db: CoreStoreModule.DatabaseManager.shared, dbQuery: CoreStoreModule.DatabaseQuery(databaseManager: CoreStoreModule.DatabaseManager.shared)
+            )
                 .tabItem{
                     Image("CoreStore")
                     Text("CoreStore")
